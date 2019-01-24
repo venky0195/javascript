@@ -1,5 +1,5 @@
 /**************************************************************************
- * Execution       : Default node             cmd> node stringReplace.js
+ * Execution       : Default node             cmd> node leapYear.js
  * Purpose         : To determine whether the given number is leap year or not.
  * 
  * @description

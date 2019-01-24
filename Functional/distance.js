@@ -1,5 +1,5 @@
 /**************************************************************************
- * Execution       : Default node             cmd> node stringReplace.js
+ * Execution       : Default node             cmd> node distance.js
  * Purpose         : To print the Euclidean distance from the point (x, y) to the origin (0, 0).
  * 
  * @description

@@ -1,5 +1,5 @@
 /**************************************************************************
- * Execution       : Default node             cmd> node stringReplace.js
+ * Execution       : Default node             cmd> node powerOfTwo.js
  * Purpose         : To generate the values of power of 2 upto user input.
  * 
  * @description

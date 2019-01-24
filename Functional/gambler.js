@@ -1,5 +1,5 @@
 /**************************************************************************
- * Execution       : Default node             cmd> node stringReplace.js
+ * Execution       : Default node             cmd> node gambler.js
  * Purpose         : To print the number of wins and percentage of win and loss.
  * 
  * @description

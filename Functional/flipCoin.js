@@ -1,5 +1,5 @@
 /**************************************************************************
- * Execution       : Default node             cmd> node stringReplace.js
+ * Execution       : Default node             cmd> node flipCoin.js
  * Purpose         : Flip Coin and print percentage of Heads and Tails.
  * 
  * @description

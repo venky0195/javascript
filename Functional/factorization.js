@@ -1,5 +1,5 @@
 /**************************************************************************
- * Execution       : Default node             cmd> node stringReplace.js
+ * Execution       : Default node             cmd> node factorization.js
  * Purpose         : To find the sum of prime factorization of the given number.
  * 
  * @description

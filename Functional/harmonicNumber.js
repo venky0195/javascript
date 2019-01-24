@@ -1,5 +1,5 @@
 /**************************************************************************
- * Execution       : Default node             cmd> node stringReplace.js
+ * Execution       : Default node             cmd> node harmonicNumber.js
  * Purpose         : To generate the harmonic numbers upto the user input.
  * 
  * @description
