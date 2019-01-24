@@ -186,6 +186,9 @@ module.exports = {
                 for (let i = 1; i <= pow; i++) {
                     console.log(Math.pow(2, i));
                 }
+            }else{
+                console.log("Enter number less than 32, greater than 0");
+                
             }
 
 
