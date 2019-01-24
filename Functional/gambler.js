@@ -1,11 +1,12 @@
 /**************************************************************************
  * Execution       : Default node             cmd> node stringReplace.js
- * Purpose         : To replace String Template “Hello <<UserName>>, How are you?” with proper username
+ * Purpose         : To print the number of wins and percentage of win and loss.
  * 
  * @description
  * 
- * @file            : stringReplace.js
- * @overview        : stringReplace takes the userinput and print it with some sentence.
+ * @file            : gambler.js
+ * @overview        : By using math.random function, print the number of wins, 
+ *                    number of bets he/she makes and percentage of win and loss.
  * @module          : read-line modules are installed
  * @author          : VENKATESH G.      <ven.venky08@gmail.com>
  * @version         : 1.0.  
@@ -16,7 +17,7 @@ var Access = require('../Utility/utility');
 /*
 For accessing data from utility file
 */
-Access.stringReplace(username);
+Access.gambler();
 /*
-Accessing stringReplace method from utility.js
+Accessing gambler method from utility.js
 */

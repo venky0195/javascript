@@ -1,11 +1,12 @@
 /**************************************************************************
  * Execution       : Default node             cmd> node stringReplace.js
- * Purpose         : To replace String Template “Hello <<UserName>>, How are you?” with proper username
+ * Purpose         : To determine whether the given number is leap year or not.
  * 
  * @description
  * 
- * @file            : stringReplace.js
- * @overview        : stringReplace takes the userinput and print it with some sentence.
+ * @file            : leapYear.js
+ * @overview        : Declaring a function and accepting the userinput and determining whether
+ *                    the given number is leap year or not
  * @module          : read-line modules are installed
  * @author          : VENKATESH G.      <ven.venky08@gmail.com>
  * @version         : 1.0.  
@@ -16,7 +17,7 @@ var Access = require('../Utility/utility');
 /*
 For accessing data from utility file
 */
-Access.stringReplace(username);
+Access.leapYear();
 /*
-Accessing stringReplace method from utility.js
+Accessing leapYear method from utility.js
 */

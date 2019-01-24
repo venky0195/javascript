@@ -1,12 +1,13 @@
 /**************************************************************************
  * Execution       : Default node             cmd> node stringReplace.js
- * Purpose         : To replace String Template “Hello <<UserName>>, How are you?” with proper username
+ * Purpose         : To print the Euclidean distance from the point (x, y) to the origin (0, 0).
  * 
  * @description
  * 
- * @file            : stringReplace.js
- * @overview        : stringReplace takes the userinput and print it with some sentence.
- * @module          : read-line modules are installed
+ * @file            : distance.js
+ * @overview        : This program takes two command-line argument x and y and calculates the Euclidean
+ *                    distance from the point (x, y) to the origin (0, 0) by using Math.power function.
+ * @module          : read-line modules are installed.
  * @author          : VENKATESH G.      <ven.venky08@gmail.com>
  * @version         : 1.0.  
  * @since           : 24/01/2019
@@ -16,7 +17,8 @@ var Access = require('../Utility/utility');
 /*
 For accessing data from utility file
 */
-Access.stringReplace(username);
+Access.distance();
 /*
-Accessing stringReplace method from utility.js
+Accessing power method from utility.js
+
 */

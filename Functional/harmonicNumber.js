@@ -1,11 +1,11 @@
 /**************************************************************************
  * Execution       : Default node             cmd> node stringReplace.js
- * Purpose         : To replace String Template “Hello <<UserName>>, How are you?” with proper username
+ * Purpose         : To generate the harmonic numbers upto the user input.
  * 
  * @description
  * 
- * @file            : stringReplace.js
- * @overview        : stringReplace takes the userinput and print it with some sentence.
+ * @file            : harmonicNumber.js
+ * @overview        : Prints the Nth harmonic number: 1/1 + 1/2 + ... + 1/N.
  * @module          : read-line modules are installed
  * @author          : VENKATESH G.      <ven.venky08@gmail.com>
  * @version         : 1.0.  
@@ -16,7 +16,8 @@ var Access = require('../Utility/utility');
 /*
 For accessing data from utility file
 */
-Access.stringReplace(username);
+Access.harmonicNumber();
 /*
-Accessing stringReplace method from utility.js
+Accessing harmonicNumber method from utility.js
+
 */

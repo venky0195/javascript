@@ -1,11 +1,12 @@
 /**************************************************************************
  * Execution       : Default node             cmd> node stringReplace.js
- * Purpose         : To replace String Template “Hello <<UserName>>, How are you?” with proper username
+ * Purpose         : To generate the values of power of 2 upto user input.
  * 
  * @description
  * 
- * @file            : stringReplace.js
- * @overview        : stringReplace takes the userinput and print it with some sentence.
+ * @file            : powerOfTwo.js
+ * @overview        : This program takes a command-line argument N and prints a table of the
+                      powers of 2 that are less than or equal to 2^N.
  * @module          : read-line modules are installed
  * @author          : VENKATESH G.      <ven.venky08@gmail.com>
  * @version         : 1.0.  
@@ -16,7 +17,8 @@ var Access = require('../Utility/utility');
 /*
 For accessing data from utility file
 */
-Access.stringReplace(username);
+Access.power();
 /*
-Accessing stringReplace method from utility.js
+Accessing power method from utility.js
+
 */

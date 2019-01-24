@@ -1,11 +1,11 @@
 /**************************************************************************
  * Execution       : Default node             cmd> node stringReplace.js
- * Purpose         : To replace String Template “Hello <<UserName>>, How are you?” with proper username
+ * Purpose         : Flip Coin and print percentage of Heads and Tails.
  * 
  * @description
  * 
- * @file            : stringReplace.js
- * @overview        : stringReplace takes the userinput and print it with some sentence.
+ * @file            : flipCoin.js
+ * @overview        : To flip a coin n number of times, randomly generate a number and print percentage of heads and tails  
  * @module          : read-line modules are installed
  * @author          : VENKATESH G.      <ven.venky08@gmail.com>
  * @version         : 1.0.  
@@ -16,7 +16,7 @@ var Access = require('../Utility/utility');
 /*
 For accessing data from utility file
 */
-Access.stringReplace(username);
+Access.flipCoin();
 /*
-Accessing stringReplace method from utility.js
+Accessing flipCoin method from utility.js
 */
