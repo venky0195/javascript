@@ -186,9 +186,9 @@ module.exports = {
                 for (let i = 1; i <= pow; i++) {
                     console.log(Math.pow(2, i));
                 }
-            }else{
+            } else {
                 console.log("Enter number less than 32, greater than 0");
-                
+
             }
 
 
@@ -330,17 +330,39 @@ module.exports = {
 
     },
     /************************************** Coupon Numbers ********************************************
-    * @purpose     : To print the number of wins and percentage of win and loss.
+    * @purpose     : To generate random number and to process distinct coupons.
     * @description : Given N distinct Coupon Numbers, how many random numbers do you
                      need to generate distinct coupon number? This program simulates this random
                      process.
-    * @function    : 
+    * @function    : function couponNumbers takes the number of coupon the user wants and generates the
+                     random number and checks if the number isn't present in the array and pushes it to the array.
     */
     couponNumbers() {
         try {
-
-
-
+            var arr = [];
+            var n = 0;
+            /**
+             * Ask user to enter no of distinct coupon he/she wants.
+             */
+            var number = readline.question("Enter the distinct coupon you want: ");
+            /**
+             * Generate random number upto the user wants.
+             */
+            while (n < number) {
+                /**
+                 * Generate random number and round off and store it in randomNum variable
+                 */
+                var randomNum = Math.round(Math.random() * 555555)
+                /**
+                 * Condition to check whether the randomNum is present in the array.
+                 * If not, push the random number to array
+                 */
+                if (!arr.includes(randomNum)) {
+                    arr.push(randomNum);
+                }
+                n++;
+            }
+            console.log("Distinct coupons are: " + arr);
         } catch (error) {
             console.log(error.message)
         }
@@ -355,15 +377,300 @@ module.exports = {
     */
 
     distance() {
-        var x = process.argv[2];
-        var y = process.argv[3];
+        try {
+            var x = process.argv[2];
+            var y = process.argv[3];
 
-        var distance = Math.sqrt((x * x) + (y * y))
+            var distance = Math.sqrt((x * x) + (y * y))
 
-        console.log("Euclidean distance from the point (x, y) to the origin (0, 0) is : " + distance);
+            console.log("Euclidean distance from the point (x, y) to the origin (0, 0) is : " + distance);
+        } catch (error) {
+            console.log(error.message);
 
+        }
+
+    },
+    /************************************** Quadratic ********************************************
+    * @purpose     : To find the roots of the equation a*x*x + b*x + c.
+    * @description : Program to find the roots of the equation a*x*x + b*x + c by using formula b*b - 4*a*c.
+    * @function    : Accesses the user input a,b,c and finds the two roots of x by finding nature of roots using formula
+                     delta = b*b - 4*a*c.
+    */
+    quadratic() {
+        try {
+            /**
+             * Accepting user input a,b,c from user and storing it in variables a,b,c respectively.
+             */
+            var a = readline.question("Enter the value of a: ")
+            var b = readline.question("Enter the value of b: ")
+            var c = readline.question("Enter the value of c: ")
+            /**
+             * Condition to check if the input is digit or not
+             */
+            if (!isNaN(a) && !isNaN(b) && !isNaN(c)) {
+                /**
+                 * Formula to find out nature of the roots.
+                 */
+                var delta = (b * b) - (4 * a * c);
+                /**
+                 *Condition for real and different roots
+                 */
+                if (delta > 0) {
+                    console.log("Roots are real and distinct")
+                    /**
+                     * Formula to find out roots of the equation
+                     */
+                    var root1 = (-b + Math.sqrt(delta)) / (2 * a);
+                    var root2 = (-b - Math.sqrt(delta)) / (2 * a);
+
+                    console.log("First root " + root1);
+                    console.log("Second root " + root2);
+                }
+                /**
+                 *Condition for real and equal roots 
+                 */
+                else if (delta == 0) {
+                    console.log("Roots are real and equal")
+                    /**
+                     * Formula to find out roots of the equation
+                     */
+                    var root1 = root2 = -b / (2 * a);
+
+                    console.log(root1);
+                }
+                /**
+                 * If roots are not real 
+                 */
+                else {
+                    console.log("Roots are complex")
+                    root1 = root2 = -b / (2 * a);
+                    /**
+                     * Formula to find imaginary part
+                     */
+                    var imaginary = Math.sqrt(-delta) / (2 * a);
+                    console.log("Root1 = " + root1 + " + i" + imaginary + " Root2 = " + root2 + " - i" + imaginary);
+                }
+            }
+            else {
+                console.log("Please enter only digits");
+
+            }
+        } catch (error) {
+            console.log(error.message);
+
+        }
+
+    },
+    /************************************** WindChill ********************************************************
+    * @purpose     : To print the wind chill by taking two double command-line arguments temperature(t) and speed(v)
+    * @description : Given the temperature t (in Fahrenheit) and the wind speed v (in miles per hour),
+                     the National Weather Service defines the effective temperature (the wind chill) to be:
+                     w = 35.74 + 0.6215t + (0.4275t - 35.75) v ^ 0.16.
+    * @function    : Takes two double command-line arguments temperature(t) and wind speed(v).
+                     Using formula, finds out the wind chill and prints it.
+    */
+    windChill() {
+        try {
+            /**
+             * Accessing command line arguments and storing the first argument as temperature 
+               and second argument as speed.
+             */
+            var temp = process.argv[2];
+            var speed = process.argv[3];
+            /**
+             * To get convert the temperature to absolute value, we use Math.abs function.
+             */
+            temp = Math.abs(temp);
+            /**
+             * Validate if the temperature(t) is more than 50 in absolute value.
+             * Or, speed(v) is larger than 120 or lesser than 3 and input is only in numbers.
+             */
+            if (!isNaN(temp) && !isNaN(speed) && temp < 50 && (speed < 120 && speed > 3)) {
+                /**
+                 * Formula to find out windchill provided by National Weather Service
+                 */
+                var windchill = 35.74 + 0.6215 * temp + (0.4275 * temp - 35.75) * Math.pow(speed, 0.16);
+                console.log("Wind chill  = " + windchill);
+            }
+            else {
+                console.log("Enter temperature value less than 50, speed in the range 3 to 120 in numbers");
+
+            }
+        } catch (error) {
+            console.log(error.message);
+        }
+
+    },
+    /************************************** Sum of three integers adds to zero **********************************
+    * @purpose     : To find distinct triples (i, j, k) such that a[i] + a[j] + a[k] = 0.
+    * @description : A program with cubic running time. Read in N integers and counts the
+                     number of triples that sum to exactly 0
+    * @function    : Takes N number of integers, and N integer input array, using loop and condition, 
+                     counts the number of distinct triplets prints it.
+    */
+    triplets() {
+        try {
+            /**
+             * Initialize count variable to zero in the beginning
+             */
+            var count = 0;
+            /**
+             * Set the flag variable to true initially
+             */
+            var flag = true;
+            /**
+             * Ask user the size of array and store it in size variable.
+             */
+            var size = readline.question("Enter the number of integers you wish to add in the array: ")
+            /**
+             * Initialize empty array
+             */
+            var inputarray = []
+            /**
+             * Loop from 0 to user defined size and add the input elements to the empty array.
+             */
+
+            for (let a = 0; a < size; a++) {
+                inputarray[a] = readline.question("Enter element " + (a + 1) + "--->")
+            }
+            /**
+             * Printing array elements.
+             */
+            console.log("Given array is: [" + inputarray + "]");
+            /**
+             * Loop to check the sum of three distinct numbers in array results to zero
+             */
+            for (let i = 0; i < size - 2; i++) {
+                for (let j = i + 1; j < size - 1; j++) {
+                    for (let k = j + 1; k < size; k++) {
+                        /**
+                         * Condition to check sum of 3 integers is 0. 
+                         * Print the triplets
+                         * If condition passes, increment count and set flag to false.
+                         */
+                        if (Number(inputarray[i]) + Number(inputarray[j]) + Number(inputarray[k]) == 0) {
+                            console.log("Distinct triplets are: " + inputarray[i] + " " + inputarray[j] + " " + inputarray[k]);
+                            count++;
+                            flag = false;
+                        }
+                    }
+                }
+
+            }
+            /**
+             * Print the number of distinct triplets
+             */
+            console.log("Number of distinct triplets: " + count);
+            /**
+             * If there are no distinct triplets, flag will be true. Show message
+             */
+            if (flag == true) {
+                console.log("Triplets does not exist");
+            }
+
+        } catch (error) {
+            console.log(error.message)
+        }
+    },
+    /************************************** StopWatch *********************************************************
+    * @purpose     : To measure the time that elapses between the start and end clicks.
+    * @description : A program for measuring the time that elapses between the start and end clicks by 
+    *                taking input to start the stopwatch and stop the stopwatch.
+    * @function    : function getCurrentSecond creates a date object and returns the current second.
+    *                function stopWatch takes input to start and stop the stopWatch, calculates the elapsed
+    *                time and prints it.
+    */
+    getCurrentSecond() {
+        try {
+            /**
+             * Create a date object
+             */
+            var dt = new Date();
+            /**
+             * invoke getSeconds function on Date object to get current second.
+             */
+            sec = dt.getSeconds();
+            /**
+             * return current second whoever invokes this method
+             */
+            return sec;
+
+        } catch (error) {
+            console.log(error.message);
+
+        }
+    },
+
+    stopWatch() {
+        try {
+            /**
+             * Ask user to start the timer
+             */
+            var startTime = readline.question("Press enter to start ")
+            /**
+             * invoke getCurrentSecond and store the returned value in start variable
+             */
+            var start = this.getCurrentSecond();
+            /**
+             * Ask user to stop the timer
+             */
+            var stopTime = readline.question("Press enter to stop ")
+            /**
+             * invoke getCurrentSecond and store the returned value in stop variable
+             */
+            var stop = this.getCurrentSecond();
+            /**
+             * To find the elapsed time, subtract stop from start.
+             */
+            console.log("Total time elapsed = " + Number(stop - start));
+
+        } catch (error) {
+            console.log(error.message);
+        }
+    },
+    /************************************** 2D Array *********************************************************
+    * @purpose     : To create and print 2 dimensional array in memory to read in M rows and N columns
+    * @description : A library for reading in 2D arrays of integers, doubles, or booleans from
+                     standard input and printing them out to standard output.
+    * @function    : Function accesses the user input to get the rows and columns, adds the elements to the 
+                     array and prints it in 2 dimension.
+    */
+    twoArray() {
+        try {
+            /**
+             * Initialize an empty array
+             */
+            var arr = [];
+            /**
+             * Ask user to input the rows and columns
+             */
+            var rows = readline.question("Enter the number of rows: ")
+            var columns = readline.question("Enter the number of columns: ")
+            /**
+             * Loop till rows is equal to user input and push it.
+             */
+            for (let i = 0; i < rows; i++) {
+                arr.push([])
+                /**
+                * Loop till columns is equal to user input.
+                */
+                for (let j = 0; j < columns; j++) {
+                    /**
+                     * Ask user to input the values and store it in element variable.
+                     */
+                    var element = readline.question("Enter input: ")
+                    arr[i][j] = element;
+
+                }
+            }
+            console.log(arr);
+        }
+        catch (error) {
+            console.log(error.message);
+        }
     }
-
 }
+
+
 
 

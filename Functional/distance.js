@@ -19,6 +19,6 @@ For accessing data from utility file
 */
 Access.distance();
 /*
-Accessing power method from utility.js
+Accessing distance method from utility.js
 
 */
