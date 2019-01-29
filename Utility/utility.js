@@ -377,7 +377,7 @@ module.exports = {
 
       console.log(
         "Euclidean distance from the point (x, y) to the origin (0, 0) is : " +
-        distance
+          distance
       );
     } catch (error) {
       console.log(error.message);
@@ -441,13 +441,13 @@ module.exports = {
           var imaginary = Math.sqrt(-delta) / (2 * a);
           console.log(
             "Root1 = " +
-            root1 +
-            " + i" +
-            imaginary +
-            " Root2 = " +
-            root2 +
-            " - i" +
-            imaginary
+              root1 +
+              " + i" +
+              imaginary +
+              " Root2 = " +
+              root2 +
+              " - i" +
+              imaginary
           );
         }
       } else {
@@ -555,17 +555,17 @@ module.exports = {
              */
             if (
               Number(inputarray[i]) +
-              Number(inputarray[j]) +
-              Number(inputarray[k]) ==
+                Number(inputarray[j]) +
+                Number(inputarray[k]) ==
               0
             ) {
               console.log(
                 "Distinct triplets are: " +
-                inputarray[i] +
-                " " +
-                inputarray[j] +
-                " " +
-                inputarray[k]
+                  inputarray[i] +
+                  " " +
+                  inputarray[j] +
+                  " " +
+                  inputarray[k]
               );
               count++;
               flag = false;
@@ -786,7 +786,8 @@ module.exports = {
     try {
       console.log(
         "Prime numbers in the range 0 to 1000 which are anagram and palindrome: "
-      ); {
+      );
+      {
         var arr = [];
         /**
          * Loop from 0 till 1000 and chwck if the number is prime.
@@ -820,14 +821,139 @@ module.exports = {
       console.log(error.message);
     }
   },
-  /****************************************** bubbleSort *******************************************
-   * @Purpose     :  To sort the given input using bubble sort method.
-   * @description :  This sorting is comparison-based in which each pair of adjacent elements
-   *                 is compared and the elements are swapped if they are not in order.
-   * @function    :  bubbleSort function compares each pair of adjacent elements and swaps it if they are not in order.
-   * @parameter   :  bubbleSort accepts integer array.
+
+  /****************************************** Searching and Sorting *******************************************
+        * @Purpose     :  To write static methods for: binarySearch for integer and String.
+                          insertionSort method for integer and string.
+                          bubbleSort method for integer and string.
+        * @description :  To output the Search and Sorted List and print elapsed time performance in descending order.
+        *******************************************************************************************************/
+  /**
+   ***************************************** binarySearch for integer*******************************************
    */
-  bubbleSort(arr) {
+  binarySearchInt(arr, find) {
+    try {
+      arr.sort();
+      var start = 0;
+      var end = arr.length - 1;
+      /**
+       * Iterate while start not meets end
+       */
+      while (start <= end) {
+        /**
+         * Find the middle index
+         */
+        var mid = Math.floor((start + end) / 2);
+        /**
+         * If element is present at mid, return True
+         */
+        if (Number(arr[mid] === find)) return true;
+        /**
+         * Else look in left or right half accordingly
+         */ else if (Number(arr[mid]) < find) start = mid + 1;
+        else end = mid - 1;
+      }
+      return false;
+    } catch (error) {
+      console.log(error.message);
+    }
+  },
+  /**
+   ***************************************** binarySearch for String*******************************************
+   */
+  binarySearchString(arr, find) {
+    try {
+      arr.sort();
+      var start = 0;
+      var end = arr.length - 1;
+      /**
+       * Iterate while start not meets end
+       */
+      while (start <= end) {
+        /**
+         * Find the middle index
+         */
+        var mid = Math.floor((start + end) / 2);
+        /**
+         * If element is present at mid, return True
+         */
+        if (arr[mid] === find) return true;
+        /**
+         * Else look in left or right half accordingly
+         */ else if (arr[mid] < find) start = mid + 1;
+        else end = mid - 1;
+      }
+      return false;
+    } catch (error) {
+      console.log(error.message);
+    }
+  },
+  /**
+   ***************************************** insertionSort for Integers*******************************************
+   */
+  insertionSortInt(arr) {
+    try {
+      var length = arr.length;
+      for (let i = 1; i < length; i++) {
+        /**
+         * Copy of the current element.
+         */
+        var temp = arr[i];
+        /**
+         * Check through the sorted part and compare with the element in temp.
+         * If large, shift the element
+         * */
+        for (var j = i - 1; j >= 0 && Number(arr[j]) > temp; j--) {
+          /**
+           *Shift the element
+           */
+          arr[j + 1] = arr[j];
+        }
+        /**
+         * Insert the copied element at the correct position
+         */
+        arr[j + 1] = temp;
+      }
+      console.log(arr);
+    } catch (error) {
+      console.log(error.message);
+    }
+  },
+  /**
+   ***************************************** insertionSort for Strings*******************************************
+   */
+  insertionSortString(arr) {
+    try {
+      var length = arr.length;
+      for (let i = 1; i < length; i++) {
+        /**
+         * Copy of the current element.
+         */
+        var temp = arr[i];
+        /**
+         * Check through the sorted part and compare with the element in temp.
+         * If large, shift the element
+         * */
+        for (var j = i - 1; j >= 0 && arr[j] > temp; j--) {
+          /**
+           *Shift the element
+           */
+          arr[j + 1] = arr[j];
+        }
+        /**
+         * Insert the copied element at the correct position
+         */
+        arr[j + 1] = temp;
+      }
+      console.log(arr);
+    } catch (error) {
+      console.log(error.message);
+    }
+  },
+  /**
+   ***************************************** bubbleSort for integers*******************************************
+   */
+  bubbleSortInt(arr) {
     try {
       var length = arr.length;
       /**
@@ -862,38 +988,40 @@ module.exports = {
       console.log(error.message);
     }
   },
-  /****************************************** insertionSort *******************************************
-       * @Purpose     :  To sort the given input using insertionSort method.                
-       * @description :  This sorting is comparison-based in which each pair of adjacent elements 
-       *                 is compared and the elements are swapped if they are not in order.
-       * @function    :  insertionSort function helps in building the final sorted list,
-                         one item at a time, with the movement of higher-ranked elements.
-       */
-  insertionSort() {
+  /**
+   ***************************************** bubbleSort for Strings*******************************************
+   */
+  bubbleSortString(arr) {
     try {
-      var unsortedArray = this.inputArray();
-      var length = unsortedArray.length;
-      for (let i = 1; i < length; i++) {
+      var length = arr.length;
+      /**
+       * Loop from first element till length of array
+       */
+      for (let i = 0; i < length; i++) {
         /**
-         * Copy of the current element.
+         * Loop for adjacent element to be compared
          */
-        var temp = unsortedArray[i];
-        /**
-         * Check through the sorted part and compare with the element in temp.
-         * If large, shift the element
-         * */
-        for (var j = i - 1; j >= 0 && unsortedArray[j] > temp; j--) {
+        for (let j = 0; j < length - i - 1; j++) {
           /**
-           *Shift the element
+           * Compare the adjacent positions
            */
-          unsortedArray[j + 1] = unsortedArray[j];
+          if (arr[j] > arr[j + 1]) {
+            /**
+             * Temporary variable to hold the current element
+             */
+            var tmp = arr[j];
+            /**
+             * Replace current element with adjacent element
+             */
+            arr[j] = arr[j + 1];
+            /**
+             * Replace adjacent element with current element
+             */
+            arr[j + 1] = tmp;
+          }
         }
-        /**
-         * Insert the copied element at the correct position
-         */
-        unsortedArray[j + 1] = temp;
       }
-      console.log(unsortedArray);
+      console.log(arr);
     } catch (error) {
       console.log(error.message);
     }
@@ -986,10 +1114,10 @@ module.exports = {
 
         temp = readline.question(
           "Is the number in the range: " +
-          mid +
-          ":" +
-          high +
-          "?\nIf Yes, Press Yes\nIf No, Press No\n"
+            mid +
+            ":" +
+            high +
+            "?\nIf Yes, Press Yes\nIf No, Press No\n"
         );
         if (temp == "Yes") mid = this.findYourNumber(mid, high);
         if (temp == "No") mid = this.findYourNumber(low, mid - 1);
@@ -1008,18 +1136,32 @@ module.exports = {
    */
   dayOfWeek() {
     try {
-      date = process.argv[2];
-      month = process.argv[3];
-      year = process.argv[4];
-
-      if (!isNaN(date, month, year) && (0 < date && date < 32) && (0 < month && month < 13) && (999 < year && year < 10000)) {
-        var y0 = year - Math.trunc((14 - month) / 12);
-        var x = y0 + Math.trunc(y0 / 4) - Math.trunc(y0 / 100) + Math.trunc(y0 / 400);
-        var m0 = month + 12 * Math.trunc((14 - month) / 12) - 2;
-        var d0 = (date + x + Math.trunc(31 * m0 / 12)) % 7;
+      /**
+       * Read command line arguments and store the values in variables
+       */
+      date = Number(process.argv[2]);
+      month = Number(process.argv[3]);
+      year = Number(process.argv[4]);
+      /**
+       * Perform validation checks.
+       */
+      if (
+        !isNaN(date, month, year) &&
+        (0 < date && date < 32) &&
+        (0 < month && month < 13) &&
+        (999 < year && year < 10000)
+      ) {
         /**
-         * Switch case takes the calculated value by using formula and finds out the day of week.
-         * 
+         * Use formulas to find out the day month and year.
+         */
+        var y0 = year - Math.floor((14 - month) / 12);
+        var x =
+          y0 + Math.floor(y0 / 4) - Math.floor(y0 / 100) + Math.floor(y0 / 400);
+        var m0 = month + 12 * Math.floor((14 - month) / 12) - 2;
+        var d0 = (date + x + Math.floor((31 * m0) / 12)) % 7;
+        /**
+         * Switch case takes the calculated day value and by using formula, returns the day of week.
+         *
          */
         switch (d0) {
           case 0:
@@ -1040,54 +1182,271 @@ module.exports = {
       } else {
         return "Please enter the valid date month year";
       }
-
     } catch (error) {
       console.log(error.message);
-
     }
   },
-
-  /****************************************** Searching and Sorting *******************************************
-        * @Purpose     :  To write static methods for: binarySearch for integer and String.
-                          insertionSort method for integer and string.
-                          bubbleSort method for integer and string.
-        * @description :  To output the Search and Sorted List and print elapsed time performance in descending order.
-        *******************************************************************************************************/
-  /**
-   * binarySearch for integer
+  /****************************************** bubbleSort *******************************************
+   * @Purpose     :  To sort the given input using bubble sort method.
+   * @description :  This sorting is comparison-based in which each pair of adjacent elements
+   *                 is compared and the elements are swapped if they are not in order.
+   * @function    :  bubbleSort function compares each pair of adjacent elements and swaps it if they are not in order.
+   * @parameter   :  bubbleSort accepts integer array.
    */
-  binarySearchInt(arr, find) {
+  bubbleSort(arr) {
     try {
-      var start = 0;
-      var end = arr.length - 1;
-      /**
-       * Iterate while start not meets end
-       */
-      while (start <= end) {
-        /**
-         * Find the middle index
-         */
-        var mid = Math.floor((start + end) / 2);
-        /**
-         * If element is present at mid, return True
-         */
-        if (Number(arr[mid] === find)) return true;
-        /**
-         * Else look in left or right half accordingly
-         */
-        else if (Number(arr[mid]) < find) start = mid + 1;
-        else end = mid - 1;
-      }
-      return false;
+      this.bubbleSortInt(arr);
     } catch (error) {
       console.log(error.message);
     }
   },
-  /**
-   * binarySearch for String
+  /****************************************** insertionSort *******************************************
+       * @Purpose     :  To sort the given input using insertionSort method.                
+       * @description :  This sorting is comparison-based in which each pair of adjacent elements 
+       *                 is compared and the elements are swapped if they are not in order.
+       * @function    :  insertionSort function helps in building the final sorted list,
+                         one item at a time, with the movement of higher-ranked elements.
+       */
+  insertionSortStr() {
+    try {
+      var arr = this.inputArray();
+      console.log("Result: ");
+      this.insertionSortString(arr);
+    } catch (error) {
+      console.log(error.message);
+    }
+  },
+  /****************************************** nonNegativeSquareRoot ***************************************************
+   * @Purpose     :  To compute the square root of a nonnegative number c given in the input using Newton's method.
+   * @description :  Calculates square root of the non negative number by using newtons method.
+   * @function    :  Takes non negative number as input and finds the square root of the given number using conditions
+   *                 until desired accuracy reached
    */
-  binarySearchString() {
-    try {} catch (error) {
+  nonNegativeSquareRoot() {
+    try {
+      /**
+       * Ask user to input a non negative number.
+       */
+      var number = readline.question(
+        "Enter a non negative number greater than zero: "
+      );
+      /**
+       * Copy the value of the user input in a temporary variable
+       */
+      var temp = number;
+      var epsilon = 1e-15;
+      /**
+       * Condition to check if the user input is positive and number only.
+       */
+      if (number > 0 && !isNaN(number)) {
+        /**
+         * Loop till desired accuracy reached using the newtons formula.
+         */
+        while (Math.abs(temp - number / temp) > epsilon * temp) {
+          temp = (number / temp + temp) / 2;
+        }
+        console.log("Square root of " + number + " is " + temp);
+      } else {
+        console.log("Please enter non negative number greater than 0 only");
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  },
+  /****************************************** searchWord ***************************************************
+   * @Purpose     :  To search the Word from Word List
+   * @description :  Read in a list of words from File. Then prompt the user to enter a word to
+                     search the list. The program reports if the search word is found in the list.
+   * @function    :  searchWord function searches the word using binary search in the file provided.
+   */
+  searchWord() {
+    try {
+      /**
+       * Initialize an empty array.
+       */
+      var arr = [];
+      /**
+       * Ask the user to search a word and store it a variable
+       */
+      var search = readline.question("Enter the word to search: ");
+      /**
+       * Requiring fs module in which readFile function is defined.
+       */
+      const fs = require("fs");
+      /**
+       * readFile function takes in relative path from the program to the text File.
+       * If both file and program is in the same folder, the simply give the file name of the text file.
+       * The function also takes two arguments (err, data). If the operation fails to extract the data, err shows what is the fault,
+       * else data argument will contain the data from the file.
+       */
+      fs.readFile("sample.txt", (err, data) => {
+        if (err) throw err;
+        /**
+         * Read the data and convert it to string and split it by commas, and push it to the empty array.
+         */
+        arr = data.toLocaleString().split(",");
+        /**
+         * Invoke binarySearchString and pass the array and element to be searched.
+         */
+        console.log(this.binarySearchString(arr, search));
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+  },
+  /****************************************** toBinary ***************************************************
+   * @Purpose     :  To output the binary (base 2) representation of the decimal number typed as the input.
+   * @description :  To compute the binary representation of n, we consider the powers of 2 less than or
+                     equal to n in decreasing order to determine which belong in the binary decomposition
+                     (and therefore correspond to a 1 bit in the binary representation).
+   * @function    :  toBinary function computes the binary representation of n, we consider the powers of 2 less than or 
+                     equal to n in decreasing order to determine which belong in the binary decomposition.
+   */
+  toBinary() {
+    try {
+      var number = readline.question("Enter the value in digit: ");
+      var str = "";
+      /**
+       * Loop till the number is greater than or equal to 1
+       */
+      while (number > 0.9) {
+        /**
+         * Perform number mod 2 and store the result in result variable
+         */
+        var result = Math.floor(number % 2);
+        /**.
+         * Concat the result to str variable
+         */
+        str = result + str;
+        /**
+         * Divide the number by 2 and store the result in number.
+         */
+        number = number / 2;
+      }
+      console.log("Binary representation is " + str);
+    } catch (error) {
+      console.log(error.message);
+    }
+  },
+  /****************************************** vendingMachine ***************************************************
+   * @Purpose     :  To calculate the minimum number of Notes as well as the Notes 
+                     to be returned by the Vending Machine as a Change
+   * @description :  There is 1, 2, 5, 10, 50, 100, 500 and 1000 Rs Notes which can be
+                     returned by Vending Machine. Write a Program to calculate the minimum number
+                     of Notes as well as the Notes to be returned by the Vending Machine as a Change
+   * @module      :  read-line modules are installed.
+   * @function    :  toBinary function computes the binary representation of n, we consider the powers of 2 less than or 
+                     equal to n in decreasing order to determine which belong in the binary decomposition.
+   */
+  vendingMachine() {
+    try {
+      var amount = readline.question("Enter the amount: ");
+      var arr = [1000, 500, 100, 50, 20, 10, 5, 2, 1];
+      var notes = 0;
+      /**
+       * Loop from 1000 rupees to 1 rupee note
+       */
+      for (let i = 0; i < arr.length; i++) {
+        if (amount / arr[i] >= 1) {
+          var c = Math.floor(amount / arr[i]);
+          notes = notes + c;
+          console.log(arr[i] + " notes are :" + c);
+          amount = amount % arr[i];
+        }
+      }
+      console.log("Total number of notes :" + notes);
+    } catch (error) {
+      console.log(error.message);
+    }
+  },
+  /****************************************** mergeSort ***************************************************
+   * @Purpose     :  To to do Merge Sort of list of Strings.
+   * @description :  To Merge Sort an array, we divide it into two halves, sort the two halves
+                     independently, and then merge the results to sort the full array. To sort a[lo, hi),
+                     by using the recursive strategy.
+   * @module      :  read-line modules are installed.
+   * @function    :  function merge(left, right, arr) merges the left, right sub arrays to the parent array.
+   *                 function mergeSort(arr) divides the array into two halves using recursion till the sub array is 1.
+   * @param       :  merge accepts 3 inputs left array, right array and the original array.
+   *                 mergeSort accepts array to sort.                
+   */
+  merge(left, right, arr) {
+    try {
+      var i = 0;
+      var j = 0;
+      var k = 0;
+      /**
+       *merge elements into arr[]  
+       */
+      while (i < left.length && j < right.length) {
+        if (left[i] <= right[j]) {
+          arr[k] = left[i];
+          i++;
+        } else {
+          arr[k] = right[j];
+          j++;
+        }
+        k++;
+      }
+      /**
+       * if left[] is greater than right[], push all left[] into arr[]
+       */
+      while (i < left.length) {
+        arr[k] = left[i];
+        i++;
+        k++;
+      }
+      /**
+       * if left[] is lesser than right[], push all right[] into arr[]
+       */
+      while (j < right.length) {
+        arr[k] = right[j];
+        j++;
+        k++;
+      }
+      return arr;
+    } catch (error) {
+      console.log(error.message);
+    }
+  },
+  mergeSort(arr) {
+    try {
+      var n = arr.length;
+      /**
+       * if size is less than 2 return that.
+       */
+      if (n < 2) {
+        return;
+      }
+      /**
+       * calculate mid value
+       */
+      var mid = Math.floor(n / 2);
+      var left = [mid];
+      var right = [n - mid];
+      /**
+       * store  elements in left array which are present before the mid
+       */
+      for (let i = 0; i < mid; i++) {
+        left[i] = arr[i];
+      }
+      /**
+       * store  elements in left array which are present before the mid
+       */
+      for (let j = mid; j < n; j++) {
+        right[j - mid] = arr[j];
+      }
+      /**
+       * call mergesort for left half
+       */
+      this.mergeSort(left);
+      /**
+       * call mergesort for left half
+       */
+      this.mergeSort(right);
+      this.merge(left, right, arr);
+      console.log("Sorted array: " + arr);
+    } catch (error) {
       console.log(error.message);
     }
   }

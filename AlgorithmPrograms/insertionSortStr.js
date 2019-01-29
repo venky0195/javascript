@@ -1,9 +1,9 @@
 /**************************************************************************
- * Execution        : Default node             cmd> node insertionSort.js
- * Purpose          : To sort the given numbers using insertionSort method.
+ * Execution        : Default node             cmd> node insertionSortStr.js
+ * Purpose          : To sort the given numbers using insertionSortStr method.
  * @description
  * 
- * @file            : insertionSort.js
+ * @file            : insertionSortStr.js
  * @overview        : insertion sort helps in building the final sorted list,
  *                    one item at a time, with the movement of higher-ranked elements.
  * @module          : read-line modules are installed.
@@ -16,6 +16,6 @@ For accessing data from utility file
 */
 var Access = require('../Utility/utility');
 /*
-*Invoking insertionSort function from utility.js.
+*Invoking insertionSortStr function from utility.js.
 */
-Access.insertionSort();
+Access.insertionSortStr();
