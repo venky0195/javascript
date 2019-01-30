@@ -13,7 +13,7 @@
  * @since           : 24/01/2019
  ***************************************************************************/
 
-var Access = require('../Utility/utility');
+var Access = require("../Utility/utility");
 /*
 For accessing data from utility file
 */

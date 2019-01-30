@@ -97,11 +97,11 @@ module.exports = {
         for (let i = 0; i < flip; i++) {
           //Math.random function returns random number. Store it in rn variable
 
-          var rn = Math.random();
+          var random = Math.random();
 
           // if random number is lesser than 0.5, increament the tail count.
 
-          if (rn < 0.5) {
+          if (random < 0.5) {
             tail++;
           }
 
@@ -220,10 +220,10 @@ module.exports = {
       console.log(error.message);
     }
   },
-  /************************************** Factors ********************************************
+  /************************************** Prime Factors ********************************************
    * @purpose     : To find out the prime factorization of the given number.
    * @description : Computes the prime factorization of N using brute force.
-   * @function    : Function factorization accepts user input, loops over it till the input,
+   * @function    : Function factorization reads user input, loops over it till the input,
    *                if the number is divisible by each number, print the number.
    */
   factorization() {
@@ -392,66 +392,67 @@ module.exports = {
   quadratic() {
     try {
       /**
-       * Accepting user input a,b,c from user and storing it in variables a,b,c respectively.
-       */
-      var a = readline.question("Enter the value of a: ");
-      var b = readline.question("Enter the value of b: ");
-      var c = readline.question("Enter the value of c: ");
-      /**
        * Condition to check if the input is digit or not
        */
-      if (!isNaN(a) && !isNaN(b) && !isNaN(c)) {
-        /**
-         * Formula to find out nature of the roots.
-         */
-        var delta = b * b - 4 * a * c;
-        /**
-         *Condition for real and different roots
-         */
-        if (delta > 0) {
-          console.log("Roots are real and distinct");
-          /**
-           * Formula to find out roots of the equation
-           */
-          var root1 = (-b + Math.sqrt(delta)) / (2 * a);
-          var root2 = (-b - Math.sqrt(delta)) / (2 * a);
-
-          console.log("First root " + root1);
-          console.log("Second root " + root2);
-        } else if (delta == 0) {
-          /**
-           *Condition for real and equal roots
-           */
-          console.log("Roots are real and equal");
-          /**
-           * Formula to find out roots of the equation
-           */
-          var root1 = (root2 = -b / (2 * a));
-
-          console.log(root1);
+      var valid = false;
+      do {
+        var a = readline.question("Enter the value of a: ");
+        var b = readline.question("Enter the value of b: ");
+        var c = readline.question("Enter the value of c: ");
+        if (isNaN(a) && isNaN(b) && isNaN(c)) {
+          console.log("Not a valid entry.");
         } else {
-          /**
-           * If roots are not real
-           */
-          console.log("Roots are complex");
-          root1 = root2 = -b / (2 * a);
-          /**
-           * Formula to find imaginary part
-           */
-          var imaginary = Math.sqrt(-delta) / (2 * a);
-          console.log(
-            "Root1 = " +
-              root1 +
-              " + i" +
-              imaginary +
-              " Root2 = " +
-              root2 +
-              " - i" +
-              imaginary
-          );
+          valid = true;
         }
+      } while (!valid);
+      /**
+       * Formula to find out nature of the roots.
+       */
+      var delta = b * b - 4 * a * c;
+      /**
+       *Condition for real and different roots
+       */
+      if (delta > 0) {
+        console.log("Roots are real and distinct");
+        /**
+         * Formula to find out roots of the equation
+         */
+        var root1 = (-b + Math.sqrt(delta)) / (2 * a);
+        var root2 = (-b - Math.sqrt(delta)) / (2 * a);
+
+        console.log("First root " + root1);
+        console.log("Second root " + root2);
+      } else if (delta == 0) {
+        /**
+         *Condition for real and equal roots
+         */
+        console.log("Roots are real and equal");
+        /**
+         * Formula to find out roots of the equation
+         */
+        var root1 = (root2 = -b / (2 * a));
+
+        console.log(root1);
       } else {
-        console.log("Please enter only digits");
+        /**
+         * If roots are not real
+         */
+        console.log("Roots are complex");
+        root1 = root2 = -b / (2 * a);
+        /**
+         * Formula to find imaginary part
+         */
+        var imaginary = Math.sqrt(-delta) / (2 * a);
+        console.log(
+          "Root1 = " +
+            root1 +
+            " + i" +
+            imaginary +
+            " Root2 = " +
+            root2 +
+            " - i" +
+            imaginary
+        );
       }
     } catch (error) {
       console.log(error.message);
@@ -522,50 +523,28 @@ module.exports = {
        */
       var flag = true;
       /**
-       * Ask user the size of array and store it in size variable.
+       * Hold the user input in the arr variable
        */
-      var size = readline.question(
-        "Enter the number of integers you wish to add in the array: "
-      );
-      /**
-       * Initialize empty array
-       */
-      var inputarray = [];
-      /**
-       * Loop from 0 to user defined size and add the input elements to the empty array.
-       */
+      var arr = this.inputArray();
 
-      for (let a = 0; a < size; a++) {
-        inputarray[a] = readline.question("Enter element " + (a + 1) + "--->");
-      }
       /**
        * Printing array elements.
        */
-      console.log("Given array is: [" + inputarray + "]");
+      console.log("Given array is: [" + arr + "]");
       /**
        * Loop to check the sum of three distinct numbers in array results to zero
        */
-      for (let i = 0; i < size - 2; i++) {
-        for (let j = i + 1; j < size - 1; j++) {
-          for (let k = j + 1; k < size; k++) {
+      for (let i = 0; i < arr.length - 2; i++) {
+        for (let j = i + 1; j < arr.length - 1; j++) {
+          for (let k = j + 1; k < arr.length; k++) {
             /**
              * Condition to check sum of 3 integers is 0.
              * Print the triplets
              * If condition passes, increment count and set flag to false.
              */
-            if (
-              Number(inputarray[i]) +
-                Number(inputarray[j]) +
-                Number(inputarray[k]) ==
-              0
-            ) {
+            if (Number(arr[i]) + Number(arr[j]) + Number(arr[k]) == 0) {
               console.log(
-                "Distinct triplets are: " +
-                  inputarray[i] +
-                  " " +
-                  inputarray[j] +
-                  " " +
-                  inputarray[k]
+                "Distinct triplets are: " + arr[i] + " " + arr[j] + " " + arr[k]
               );
               count++;
               flag = false;
@@ -640,11 +619,19 @@ module.exports = {
        * Initialize an empty array
        */
       var arr = [];
+      var valid = false;
       /**
-       * Ask user to input the rows and columns
+       * Ask user to input the rows and columns, Validation to accept only numbers.
        */
-      var rows = readline.question("Enter the number of rows: ");
-      var columns = readline.question("Enter the number of columns: ");
+      do {
+        var rows = readline.question("Enter the number of rows: ");
+        var columns = readline.question("Enter the number of columns: ");
+        if (isNaN(rows) || isNaN(columns)) {
+          console.log("Not a valid entry.");
+        } else {
+          valid = true;
+        }
+      } while (!valid);
       /**
        * Loop till rows is equal to user input and push it.
        */
@@ -666,6 +653,47 @@ module.exports = {
       console.log(error.message);
     }
   },
+  /****************************************** stringPermutations ***************************************************
+   * @Purpose     :  To return all permutation of a String using iterative method and Recursion method.
+   * @description :  static functions to return all permutation of a String using iterative method and
+                     Recursion method. Check if the arrays returned by two string functions are equal.
+   * @module      :  read-line modules are installed.
+   * @function    :  function mergeSort accpets string to find the permutations. Using recursive method, finds all the 
+   *                 permutations of the string
+   * @param       :  this function accpets string for which the permutations has to be found.                
+   */
+  stringPermutations(string) {
+    try {
+      var results = [];
+      /**
+       * if string is a single character add the character to results and return results
+       */
+      if (string.length === 1) {
+        results.push(string);
+        return results;
+      }
+      /**
+       * for each char in string define innerPermutations as a char of string
+       * set innerPermutations to stringPermutations (without next char).
+       */
+      for (var i = 0; i < string.length; i++) {
+        var firstChar = string[i];
+        var charsLeft = string.substring(0, i) + string.substring(i + 1);
+        var innerPermutations = this.stringPermutations(charsLeft);
+        /**
+         * foreach string in innerPermutations add defined char and innerPermutations char
+         * return results
+         */
+        for (var j = 0; j < innerPermutations.length; j++) {
+          results.push(firstChar + innerPermutations[j]);
+        }
+      }
+      return results;
+    } catch (error) {
+      console.log("error.message");
+    }
+  },
+
   //Algorithm Programs
   /*************************************** Anagram *******************************************
     * @Purpose     :  To take 2 string inputs and check for anagrams.                     
@@ -833,25 +861,29 @@ module.exports = {
    */
   binarySearchInt(arr, find) {
     try {
-      arr.sort();
+      arr.sort;
       var start = 0;
       var end = arr.length - 1;
       /**
        * Iterate while start not meets end
-       */
-      while (start <= end) {
+       */ while (start <= end) {
         /**
          * Find the middle index
          */
-        var mid = Math.floor((start + end) / 2);
+        var mid = start + Math.floor((end - start) / 2);
         /**
          * If element is present at mid, return True
          */
-        if (Number(arr[mid] === find)) return true;
-        /**
-         * Else look in left or right half accordingly
-         */ else if (Number(arr[mid]) < find) start = mid + 1;
-        else end = mid - 1;
+        if (arr[mid] === find) {
+          return true;
+        } else if (find < arr[mid]) {
+          /**
+           * Else look in left or right half accordingly
+           */
+          end = mid - 1;
+        } else {
+          start = mid + 1;
+        }
       }
       return false;
     } catch (error) {
@@ -1224,12 +1256,21 @@ module.exports = {
    */
   nonNegativeSquareRoot() {
     try {
+      var valid = false;
       /**
-       * Ask user to input a non negative number.
+       * Validation to accept only numbers.
        */
-      var number = readline.question(
-        "Enter a non negative number greater than zero: "
-      );
+      do {
+        var number = readline.question(
+          "Enter a non negative number greater than zero: "
+        );
+        if (isNaN(number)) {
+          console.log("Not a valid entry.");
+        } else {
+          valid = true;
+        }
+      } while (!valid);
+
       /**
        * Copy the value of the user input in a temporary variable
        */
@@ -1304,7 +1345,19 @@ module.exports = {
    */
   toBinary() {
     try {
-      var number = readline.question("Enter the value in digit: ");
+      var valid = false;
+      /**
+       * Validation to accept only numbers.
+       */
+      do {
+        var number = readline.question("Enter the value in digit: ");
+        if (isNaN(number)) {
+          console.log("Not a valid entry.");
+        } else {
+          valid = true;
+        }
+      } while (!valid);
+
       var str = "";
       /**
        * Loop till the number is greater than or equal to 1
@@ -1340,9 +1393,20 @@ module.exports = {
    */
   vendingMachine() {
     try {
-      var amount = readline.question("Enter the amount: ");
       var arr = [1000, 500, 100, 50, 20, 10, 5, 2, 1];
       var notes = 0;
+      var valid = false;
+      /**
+       * Validation to accept only numbers.
+       */
+      do {
+        var amount = readline.question("Enter the amount: ");
+        if (isNaN(amount)) {
+          console.log("Not a valid entry.");
+        } else {
+          valid = true;
+        }
+      } while (!valid);
       /**
        * Loop from 1000 rupees to 1 rupee note
        */
@@ -1376,7 +1440,7 @@ module.exports = {
       var j = 0;
       var k = 0;
       /**
-       *merge elements into arr[]  
+       *merge elements into arr[]
        */
       while (i < left.length && j < right.length) {
         if (left[i] <= right[j]) {
@@ -1445,7 +1509,6 @@ module.exports = {
        */
       this.mergeSort(right);
       this.merge(left, right, arr);
-      console.log("Sorted array: " + arr);
     } catch (error) {
       console.log(error.message);
     }

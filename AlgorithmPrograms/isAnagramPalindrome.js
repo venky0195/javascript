@@ -13,8 +13,8 @@
 /*
 For accessing data from utility file
 */
-var Access = require('../Utility/utility');
+var access = require('../Utility/utility');
 /*
 Accessing isAnagramPalindrome function from utility.js
 */
-Access.isAnagramPalindrome();
+access.isAnagramPalindrome();

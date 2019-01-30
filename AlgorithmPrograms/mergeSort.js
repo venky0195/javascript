@@ -9,15 +9,15 @@
  * @module          : read-line modules are installed.
  * @author          : VENKATESH G.      <ven.venky08@gmail.com>
  * @version         : 1.0.  
- * @since           : 29/01/2019
+ * @since           : 30/01/2019
  ***************************************************************************/
 /*
 For accessing data from utility file
 */
 var Access = require("../Utility/utility");
-var arr=Access.inputArray();
+var arr = Access.inputArray();
 /*
  *Invoking mergeSort function from utility.js.
  */
 Access.mergeSort(arr);
- 
+console.log("Result: ", arr);
