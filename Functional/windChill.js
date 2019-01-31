@@ -12,11 +12,11 @@
  * @version         : 1.0.  
  * @since           : 25/01/2019
  ***************************************************************************/
-var Access = require('../Utility/utility');
 /*
 For accessing data from utility file
 */
-Access.windChill();
+var access = require('../Utility/utility');
 /*
 Accessing windchill method from utility.js
 */
+access.windChill();

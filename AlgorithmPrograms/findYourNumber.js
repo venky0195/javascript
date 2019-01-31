@@ -16,7 +16,7 @@
 /*
 For accessing data from utility file
 */
-var Access = require("../Utility/utility");
+var access = require("../Utility/utility");
 /**
  * reading range from command line argument and storing it in a variable.
  */
@@ -26,4 +26,4 @@ high = high-1;
 /*
  *Invoking findYourNumber function from utility.js.
  */
-console.log("The Number is : "+Access.findYourNumber(low, high));
+console.log("The Number is : "+access.findYourNumber(low, high));

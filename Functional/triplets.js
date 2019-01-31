@@ -11,11 +11,11 @@
  * @version         : 1.0.  
  * @since           : 25/01/2019
  ***************************************************************************/
-var Access = require('../Utility/utility');
+var access = require('../Utility/utility');
 /*
 For accessing data from utility file
 */
-Access.triplets();
+access.triplets();
 /*
 Accessing triplets method from utility.js
 */

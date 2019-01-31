@@ -14,7 +14,7 @@
 /*
 For accessing data from utility file
 */
-var Access = require('../Utility/utility');
+var access = require('../Utility/utility');
 var readline = require('readline-sync');
 try {
     var arr = [];
@@ -29,7 +29,7 @@ try {
      *Invoking bubbleSort method from utility.js if the user input is number only.
      */
     if (!arr.some(isNaN)) {
-        Access.bubbleSort(arr);
+        access.bubbleSort(arr);
     }
     else {
         console.log("Enter only numbers");

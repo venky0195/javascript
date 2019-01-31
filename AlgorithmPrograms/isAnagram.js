@@ -13,7 +13,7 @@
 /*
 For accessing data from utility file
 */
-var Access = require('../Utility/utility');
+var access = require('../Utility/utility');
 var readline = require('readline-sync');
 /**
  * Ask user to input two strings and store it in word1 and word2 variables respectively
@@ -23,4 +23,4 @@ var word2 = readline.question("Enter the second word(Case insesnsitive): ")
 /*
 Accessing isAnagram method from utility.js
 */ 
-console.log(Access.isAnagram(word1, word2));
+console.log(access.isAnagram(word1, word2));

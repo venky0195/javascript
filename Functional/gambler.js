@@ -13,11 +13,11 @@
  * @since           : 24/01/2019
  ***************************************************************************/
 
-var Access = require('../Utility/utility');
+var access = require('../Utility/utility');
 /*
 For accessing data from utility file
 */
-Access.gambler();
+access.gambler();
 /*
 Accessing gambler method from utility.js
 */

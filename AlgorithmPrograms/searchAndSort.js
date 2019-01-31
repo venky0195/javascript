@@ -13,7 +13,7 @@
 try {
   const { PerformanceObserver, performance } = require("perf_hooks");
   var readline = require("readline-sync");
-  var Access = require("../Utility/utility");
+  var access = require("../Utility/utility");
   /**
    * Accepting user input for integer values
    */
@@ -41,27 +41,27 @@ try {
    */
   console.log(
     "result for binary search for integers: " +
-      Access.binarySearchInt(intArray, find) +
+      access.binarySearchInt(intArray, find) +
       "\n"
   );
 
   console.log(
     "result for binary search for Strings: " +
-      Access.binarySearchString(stringArray, search) +
+      access.binarySearchString(stringArray, search) +
       "\n"
   );
 
   console.log("result for insertion sort for integers: ");
-  Access.insertionSortInt(intArray);
+  access.insertionSortInt(intArray);
 
   console.log("result for insertion sort for strings: ");
-  Access.insertionSortString(stringArray);
+  access.insertionSortString(stringArray);
 
   console.log("result for bubble sort for integers: ");
-  Access.bubbleSortInt(intArray);
+  access.bubbleSortInt(intArray);
 
   console.log("result for bubble sort for strings: ");
-  Access.bubbleSortInt(stringArray);
+  access.bubbleSortInt(stringArray);
 } catch (error) {
   console.log(error.message);
 }

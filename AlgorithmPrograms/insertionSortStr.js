@@ -14,8 +14,8 @@
 /*
 For accessing data from utility file
 */
-var Access = require('../Utility/utility');
+var access = require('../Utility/utility');
 /*
 *Invoking insertionSortStr function from utility.js.
 */
-Access.insertionSortStr();
+access.insertionSortStr();

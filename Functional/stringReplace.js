@@ -12,11 +12,11 @@
  * @since           : 24/01/2019
  ***************************************************************************/
 
-var Access = require('../Utility/utility');
+var access = require('../Utility/utility');
 /*
 For accessing data from utility file
 */
-Access.stringReplace(username);
+access.stringReplace(username);
 /*
 Accessing stringReplace method from utility.js
 */

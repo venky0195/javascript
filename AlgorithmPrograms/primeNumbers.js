@@ -10,11 +10,11 @@
  * @version         : 1.0.  
  * @since           : 27/01/2019
  ***************************************************************************/
-var Access = require('../Utility/utility');
+var access = require('../Utility/utility');
 /*
 For accessing data from utility file
 */
-Access.primeNum();
+access.primeNum();
 /*
 Accessing primeNum function from utility.js
 */

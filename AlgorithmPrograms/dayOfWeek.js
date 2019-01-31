@@ -14,8 +14,8 @@
 /*
 For accessing data from utility file
 */
-var Access = require("../Utility/utility");
+var access = require("../Utility/utility");
 /*
  *Invoking dayOfWeek function from utility.js.
  */
-console.log("The Day is : "+Access.dayOfWeek());
+console.log("The Day is : "+access.dayOfWeek());

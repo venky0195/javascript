@@ -45,20 +45,24 @@ module.exports = {
     try {
       // We specify the format in which user has to provide the input
       var format = /[a-zA-Z]/;
-      /*
-            for user input
-            */
-      var username = read.question("Enter your name : ");
+      var valid = false;
+      /**
+       * condition to check whether the input is in the given format and minimum characters of 3.
+       */
+      do {
+        var username = read.question("Enter your name : ");
+        if (username.length < 3 && !format.test(username)) {
+          console.log("Please enter characters more than 3, only alphabets");
+        } else {
+          valid = true;
+        }
+      } while (!valid);
 
-      //condition to check whether the input is in the given format and minimum characters of 3.
-
-      if (username.length >= 3 && format.test(username)) {
+      {
         var input = "Hello <<UserName>>, How are you?";
         //searches for <<UserName>> in the program and replaces it with the input
         var output = input.replace(/<<UserName>>/g, username);
         console.log(output);
-      } else {
-        console.log("Please enter characters more than 3, only alphabets");
       }
     } catch (error) {
       console.log(error.message);
@@ -80,47 +84,44 @@ module.exports = {
 
       var head = 0;
       var tail = 0;
-
+      var valid = false;
       /**
-       * Accept the user input and store it in flip variable
+       * Ask user to input the number, Validation to accept only positive number.
        */
-
-      var flip = readline.question(
-        "Enter the number of times to flip the coin "
-      );
-
-      /**
-       * Condition to check whether the given number is positive number.
-       * For loop for generating the random number up-to number of flip.*/
-
-      if (flip > 0 && !isNaN(flip)) {
-        for (let i = 0; i < flip; i++) {
-          //Math.random function returns random number. Store it in rn variable
-
-          var random = Math.random();
-
-          // if random number is lesser than 0.5, increament the tail count.
-
-          if (random < 0.5) {
-            tail++;
-          }
-
-          // if the random number is greater than 0.5, increment the head count.
-          else {
-            head++;
-          }
+      do {
+        var flip = readline.question(
+          "Enter the number of times to flip the coin "
+        );
+        if (flip < 0 && isNaN(flip)) {
+          console.log("Enter positive number only");
+        } else {
+          valid = true;
         }
-        //To find the percentage of head and tail and print it.
-        var res = (head / flip) * 100;
-        console.log("Percentage of Head is " + res + "%");
-        var res1 = (tail / flip) * 100;
-        console.log("Percentage of tail is " + res1 + "%");
-      } else {
-        /**
-         * If the input value is not a number or not positive, Show user a message.`
-         */
-        console.log("Enter positive number only");
+      } while (!valid);
+      /**
+       *  For loop for generating the random number up-to number of flip.
+       */
+      for (let i = 0; i < flip; i++) {
+        //Math.random function returns random number. Store it in rn variable
+
+        var random = Math.random();
+
+        // if random number is lesser than 0.5, increament the tail count.
+
+        if (random < 0.5) {
+          tail++;
+        }
+
+        // if the random number is greater than 0.5, increment the head count.
+        else {
+          head++;
+        }
       }
+      //To find the percentage of head and tail and print it.
+      var res = (head / flip) * 100;
+      console.log("Percentage of Head is " + res + "%");
+      var res1 = (tail / flip) * 100;
+      console.log("Percentage of tail is " + res1 + "%");
     } catch (error) {
       console.log(error.message);
     }
@@ -133,14 +134,19 @@ module.exports = {
   leapYear() {
     try {
       var year = 0000;
+      var valid = false;
       /**
-       * Accept user input.
+       * Ask user to input the year, Validation to accept only 4 digit number.
        */
-      var year = readline.question("Enter the year in YYYY format: ");
-      /**
-       * Check if the user input is of YYYY and only positive number
-       */
-      if ((year.length = 4 && !isNaN(year) && year > 0)) {
+      do {
+        var year = readline.question("Enter the year in YYYY format: ");
+        if (year.length != 4 && isNaN(year) && year < 0) {
+          console.log("Enter year in the format YYYY");
+        } else {
+          valid = true;
+        }
+      } while (!valid);
+      {
         /**
          *condition to check whether the number is leap year or not
          */
@@ -149,11 +155,6 @@ module.exports = {
         } else {
           console.log(year + " is not a leap year");
         }
-      } else {
-        /**
-         * If the given value is not a 4 digit number or not positive, Show user a message.`
-         */
-        console.log("Enter year in the format YYYY");
       }
     } catch (error) {
       console.log(error.message);
@@ -204,18 +205,24 @@ module.exports = {
 
   harmonicNumber() {
     try {
-      var num = readline.question("Enter Nth number: ");
-      var sum = 0;
-      // condition to check whether the number is not zero.
-      if (num != 0 && !isNaN(num)) {
-        // loop to generate the Nth Harmonic value upto user input
-        for (let i = 1; i <= num; i++) {
-          sum += 1.0 / i;
+      var valid = false;
+      /**
+       * Ask user to input the number, Validation to accept only numbers and not zero.
+       */
+      do {
+        var num = readline.question("Enter Nth number: ");
+        if ((num = 0 && !isNaN(num1))) {
+          console.log("Not a valid entry.");
+        } else {
+          valid = true;
         }
-        console.log("N th Harmonic number is " + sum);
-      } else {
-        console.log("Please enter non zero number");
+      } while (!valid);
+      var sum = 0;
+      // loop to generate the Nth Harmonic value upto user input
+      for (let i = 1; i <= num; i++) {
+        sum += 1.0 / i;
       }
+      console.log("N th Harmonic number is " + sum);
     } catch (error) {
       console.log(error.message);
     }
@@ -228,10 +235,18 @@ module.exports = {
    */
   factorization() {
     try {
+      var valid = false;
       /**
-       * Accept the user input and store it in number variable
+       * Ask user to input the number, Validation to accept only numbers.
        */
-      var number = readline.question("Enter the number: ");
+      do {
+        var number = readline.question("Enter the number: ");
+        if (!isNaN(number)) {
+          console.log("Not a valid entry.");
+        } else {
+          valid = true;
+        }
+      } while (!valid);
       /**
        * Initialize i variable to 2 and loop over it till the number and increment each time
        */
@@ -275,13 +290,23 @@ module.exports = {
       /**
        * Accept user input for stake amount and goal amount
        */
-      var stake = readline.question("Enter the initial stake amount: ");
-      var goal = readline.question("Enter the goal amount to be achieved: ");
+      var valid = false;
       /**
        * Condition to check whether the input given is a number,
        * stake amount is greater than goal amount.
        */
-      if (stake > 0 && stake < goal && !isNaN(stake, goal)) {
+      do {
+        var stake = readline.question("Enter the initial stake amount: ");
+        var goal = readline.question("Enter the goal amount to be achieved: ");
+        if (stake < 0 && stake > goal && isNaN(stake, goal)) {
+          console.log(
+            "**Stake amount should be less than goal amount**  **Input only numbers**"
+          );
+        } else {
+          valid = true;
+        }
+      } while (!valid);
+      {
         /**
          * loop over till the stake is less than goal and more than 0
          */
@@ -313,10 +338,6 @@ module.exports = {
 
         console.log("Win percentage: " + wp);
         console.log("loss percentage: " + lp);
-      } else {
-        console.log(
-          "**Stake amount should be less than goal amount**  **Input only numbers**"
-        );
       }
     } catch (error) {
       console.log(error.message);
@@ -334,10 +355,19 @@ module.exports = {
     try {
       var arr = [];
       var n = 0;
+
+      var valid = false;
       /**
-       * Ask user to enter no of distinct coupon he/she wants.
+       * Ask user to enter no of distinct coupon he/she wants, Validation to accept only numbers.
        */
-      var number = readline.question("Enter the distinct coupon you want: ");
+      do {
+        var number = readline.question("Enter the distinct coupon you want: ");
+        if (isNaN(number)) {
+          console.log("Not a valid entry.");
+        } else {
+          valid = true;
+        }
+      } while (!valid);
       /**
        * Generate random number upto the user wants.
        */
