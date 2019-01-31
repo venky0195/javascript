@@ -11,17 +11,18 @@
  *  @version        : 1.0.
  *  @since          : 24/01/2019
  ******************************************************************************/
-
 /**
  * @purpose     : To accept user input value
- * @description : invoke this whenever we want take input from user
+ * @description : use this whenever we want take input from user
  */
 var readline = require("readline-sync");
 
 module.exports = {
-  /**
-   * @purpose   : To accept array elements from user
-   */
+  /****************************************************************************************************************
+   * @purpose   : To accept array elements from user.
+   * @function  : inputArray function askes the user to iput the size of the array and aks the array elements in it,
+   *              returns the array.
+   ***************************************************************************************************************/
   inputArray() {
     var arr = [];
     /**
@@ -32,6 +33,29 @@ module.exports = {
       arr[i] = readline.question("Enter the array elements: ");
     }
     return arr;
+  },
+  /****************************************************************************************************************
+   * @purpose   : To read file from the path
+   * @function  : fileRead function reads the file and splits it by space and return the array.
+   ***************************************************************************************************************/
+  fileRead() {
+    var fs = require("fs");
+    var f = fs.readFileSync("sample.txt", "utf8");
+    var arr = f.split(" ");
+    return arr;
+  },
+  /****************************************************************************************************************
+   * @purpose   : To write the data into a file.
+   * @function  : fileWrite function write the data to a file.
+   * @param     : fileWrite function accepts fileName and data to be written.
+   ***************************************************************************************************************/
+  fileWrite(fileName, data) {
+    var fs = require("fs");
+    fs.writeFile(fileName, data, function(err) {
+      if (err) {
+        return console.log(err);
+      }
+    });
   },
   //Functional Programs
   /*/************************************** StringReplace *******************************************
@@ -721,6 +745,140 @@ module.exports = {
       return results;
     } catch (error) {
       console.log("error.message");
+    }
+  },
+  /*************************************** Cross Game or Tic-Tac-Toe Game *******************************************
+    * @Purpose     :  To play Tic Tac Toe game.                    
+    * @description :  To play a Cross Game or Tic-Tac-Toe Game. Player 1 is the Computer and the Player 2 is the user. 
+                      Player 1 take Random Cell that is the Column and Row.             
+    */
+  /**
+   * To initialize the game.
+   */
+  intializeGame() {
+    try {
+      var game = [];
+      for (let i = 0; i <= 2; i++) {
+        game.push([]);
+        for (let j = 0; j <= 2; j++) game[i][j] = "-";
+      }
+      return game;
+    } catch (error) {
+      console.log(error.message);
+    }
+  },
+  /**
+   * method to generate a random value
+   */
+  random() {
+    /**
+     * To generate the random value and return the value.
+     */
+    var random = Math.floor(Math.random() * 3);
+    console.log(random + 1);
+    return random;
+  },
+
+  mark(game, x, y, value) {
+    try {
+      if (game[x][y] == "-") game[x][y] = value;
+
+      for (let i = 0; i <= 2; i++) {
+        var print = [];
+        for (let j = 0; j <= 2; j++) print[j] = game[i][j];
+        console.log(print);
+      }
+      return game;
+    } catch (error) {
+      console.log(error.message);
+    }
+  },
+  /**
+   * When it is computer's turn
+   */
+  computerPlayer(game) {
+    try {
+      var arr;
+      var flag = false;
+      /**
+       * Loop over till flag becomes true.
+       */
+      while (flag == false) {
+        var x = this.random();
+        var y = this.random();
+        if (game[x][y] == "-") {
+          arr = this.mark(game, x, y, "O");
+          flag = true;
+        }
+      }
+      return game;
+    } catch (error) {
+      console.log(error.message);
+    }
+  },
+  /**
+   * When it is user's turn
+   */
+  userPlayer(game) {
+    try {
+      var flag = false;
+      /**
+       * Iterate till the flag becomes true
+       */
+      while (flag == false) {
+        console.log("Enter the row value: ");
+        let x =
+          readline.questionInt("Enter the value of x within 1,2,3 : ") - 1;
+        let y =
+          readline.questionInt("Enter the value of y within 1,2,3 : ") - 1;
+        if (game[x][y] == "-") {
+          this.mark(game, x, y, "X");
+          flag = true;
+        } else console.log("Please enter the correct choice");
+      }
+      return game;
+    } catch (error) {
+      console.log(error.message);
+    }
+  },
+  /**
+   * Check the game and return the boolean.
+   */
+  check(game) {
+    try {
+      for (let i = 0; i <= 2; i++) {
+        if (game[i][0] == game[i][1] && game[i][1] == game[i][2]) {
+          if (game[i][0] == "O" || game[i][0] == "X") {
+            return true;
+          }
+        }
+        if (game[0][i] == game[1][i] && game[1][i] == game[2][i]) {
+          if (game[0][i] == "O" || game[0][i] == "X") {
+            return true;
+          }
+        }
+      }
+      var k = 0,
+        l = 0;
+      if (
+        game[k][k] == game[k + 1][k + 1] &&
+        game[k + 1][k + 1] == game[k + 2][k + 2]
+      ) {
+        if (game[0][0] == "O" || game[0][0] == "X") {
+          return true;
+        }
+      }
+      if (
+        game[l][l + 2] == game[l + 1][l + 1] &&
+        game[l + 1][l + 1] == game[l + 2][l]
+      ) {
+        if (game[0][0] == "O" || game[0][0] == "X") {
+          return true;
+        }
+      }
+      return false;
+    } catch (error) {
+      console.log(error.message);
     }
   },
 
