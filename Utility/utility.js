@@ -40,8 +40,8 @@ module.exports = {
    ***************************************************************************************************************/
   fileRead() {
     var fs = require("fs");
-    var f = fs.readFileSync("sample.txt", "utf8");
-    var arr = f.split(" ");
+    var f = fs.readFileSync("numbers.txt", "utf8");
+    var arr = f.trim().split(" ")
     return arr;
   },
   /****************************************************************************************************************
