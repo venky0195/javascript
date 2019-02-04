@@ -204,63 +204,82 @@ class LinkedList {
   }
 }
 /***********************************************Stack************************************************/
+class SNode {
+  constructor(data) {
+    this.data = data;
+    this.next = null;
+  }
+}
 
 class Stack {
   constructor() {
-    this.items = [];
+    this.top = null;
   }
   /**
    * To add an element at the top of the stack.
-   * @param {any} element
+   * @param {any} item
    */
-  push(element) {
+  push(item) {
     /**
-     * Push elements in the items
+     * create new node.
      */
-    this.items.push(element);
+    let node = new SNode(item);
+    if (this.top) {
+      node.next = this.top;
+      this.top = node;
+    } else {
+      this.top = node;
+    }
   }
   /**
-   * return top most element in the stack and removes it from the stack.Underflow if stack is empty
+   *To remove top element from the stack
    */
   pop() {
-    try {
-      if (this.items.length == 0) {
-        return "Underflow";
-      }
-      return this.items.pop();
-    } catch (error) {
-      console.log(error.message);
+    if (this.top) {
+      let itemToPop = this.top;
+      this.top = this.top.next;
+      return itemToPop.data;
+    } else {
+      console.log("Stack is empty!");
+      return false;
     }
   }
   /**
    * Return the topmost element without removing it from the stack.
    */
   peak() {
-    return this.items[this.items.length - 1];
+    if (this.top) {
+      return this.top.data;
+    } else {
+      return null;
+    }
   }
   /**
    * Returns true if the stack is empty.
    */
   isEmpty() {
-    return this.items.length == 0;
+    return this.length > 1;
   }
   /**
    * Returns the size of the stack
    */
   size() {
-    return this.items.length;
-  }
-  /**
-   * Returns the contents of the stack
-   */
-  printStack() {
-    try {
-      var str = "";
-      for (var i = 0; i < this.items.length; i++) str += this.items[i] + " ";
-      return str;
-    } catch (error) {
-      console.log(error.message);
+    let current = this.top;
+    let counter = 0;
+    while (current) {
+      counter++;
+      current = current.next;
     }
+    return counter;
+  }
+  print(){
+    var string = "";
+    var temp = this.top
+    while(temp!=null){
+      string = string + " " + temp.data
+      temp = temp.next;
+    }
+    return string;
   }
 }
 /*****************************************************Queue*******************************************/
@@ -292,7 +311,12 @@ class Queue {
    * Returns the size of the queue
    */
   size() {
-    return this.items.length;
+    let current = (counter[(current, counter)] = [this.head, 0]);
+    while (current) {
+      counter++;
+      current = current.next;
+    }
+    return counter;
   }
   /**
    * Returns the contents of the queue
@@ -433,13 +457,90 @@ class Calendar {
         }
         console.log("\n\n");
       } else {
-        console.log("Not a valid month/year. Enter in MM YYYY format");
+        console.log("Not a valid month/year. Enter in M/MM YYYY format");
       }
     } catch (error) {
       console.log(error.message);
     }
   }
 }
+/*****************************************************LinkedListQueue**********************************/
+class QNode {
+  constructor(data) {
+    this.data = data;
+    this.next = null;
+  }
+}
+
+class LLQueue {
+  constructor() {
+    this.tail = null;
+    this.head = null;
+  }
+  /**
+   * To add an element into the rear of the queue.
+   * @param {any} item
+   */
+  enQueue(item) {
+    /**
+     * Create a node by passing the item
+     */
+    let node = new QNode(item);
+    /**
+     * If there are no head and tail, point the data to head and tail
+     */
+    if (!this.head) {
+      this.head = node;
+      this.tail = node;
+    } else {
+      /**
+       * We just move the tail pointer
+       */
+      this.tail.next = node;
+      this.tail = node;
+    }
+  }
+  /**
+   * To remove an item from the queue.
+   */
+  deQueue() {
+    if (!this.head) {
+      return "No item";
+    } else {
+      let itemToPop = this.head;
+      this.head = this.head.next;
+      return itemToPop;
+    }
+  }
+  /**
+   *return true if the queue is empty.
+   */
+  isEmpty() {
+    return this.size() < 1;
+  }
+  /**
+   * Returns the size of the queue
+   */
+  size() {
+    let current = this.head;
+    let counter = 0;
+    while (current) {
+      counter++;
+      current = current.next;
+    }
+    return counter;
+  }
+  print(){
+    var string = "";
+    var temp = this.head
+    while(temp){
+      string = string + " " + temp.data;
+      temp = temp.next;
+    }
+    return string;
+  }
+}
+
 module.exports = {
   LinkedList,
   Node,
@@ -447,12 +548,48 @@ module.exports = {
   Queue,
   Deque,
   Calendar,
-
+  LLQueue,
+  /**
+   * To find the factorization of a given number
+   * @param {Number} number 
+   */
   factorization(number) {
     var fact = 1;
     for (let i = 1; i <= number; i++) {
       fact = fact * i;
     }
     return fact;
+  },
+  /**
+   * To find the prime numbers for the given range
+   * @param {Number} initial 
+   * @param {Number} final 
+   */
+  isPrime(initial,final)
+{
+var flag=0;
+k=0;
+var prime=[];
+
+for(var index1=initial;index1<=final;index1++)
+{
+  for(var index2=2;index2<index1;index2++)
+  {
+    if(index1%index2==0)
+    {
+      flag=0;
+      break;
+    }
+    else
+    {
+      flag=1;
+    }
   }
+  if(flag==1)
+  {
+    prime[k++]=index1;
+  }
+}
+return prime;
+},
 };
