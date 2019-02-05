@@ -23,30 +23,55 @@ function Queue() {
   try {
     var queue = new accessDs.Queue();
     var minBal = 4000;
+    var balan = 4000;
     var set = [];
     var flag = true;
     var count = 0;
-    var size = readline.question(
-      "Enter the total number of people to be in queue :"
-    );
+    var valid = false;
+    /**
+     * Ask user to input  total number of people to be in queue, Validation to accept only valid numbers.
+     */
+    do {
+      var size = readline.question(
+        "Enter the total number of people to be in queue :"
+      );
+      if (isNaN(size) || size < 0) {
+        console.log("Not a valid entry.");
+      } else {
+        valid = true;
+      }
+    } while (!valid);
+
     if (size > 0) {
       /**
        * Loop the number of size of people to deposit and withdraw amount.
        */
-      for (let i = 1; i < size; i++) {
+      even: for (let i = 1; i < size; i++) {
         var input = readline.question(
-          "Enter 1 deposit amount :\nEnter 2 to withdraw amount :"
+          "\nEnter 1 deposit amount :\nEnter 2 to withdraw amount :"
         );
         if (input == 1) {
+          console.log("\nBalance left in the bank: " + balan);
           var amount = readline.questionFloat(
             "Enter the total amount to deposit :"
           );
           var set = queue.enQueue(Number(amount));
+          balan = balan + amount;
           flag = true;
         } else if (input == 2) {
-          var amount = readline.questionInt(
+          console.log("\nBalance left in the bank: " + balan);
+          var amount = readline.questionFloat(
             "Enter the total amount to be withdraw :"
           );
+          balan = balan - amount;
+          if (amount > balan) {
+            console.log(
+              "Minimum balance (₹" +
+                minBal +
+                ") is not maintained. Please comeback with lesser amount"
+            );
+            return;
+          }
           var get = queue.enQueue(Number(-amount));
           flag = true;
         } else {

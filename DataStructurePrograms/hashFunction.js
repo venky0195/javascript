@@ -65,7 +65,7 @@ function hashing() {
      * Ask user to input the number, Validation to accept only positive number.
      */
     do {
-      var number = readline.question("Enter the number you want to search \n");
+      var number = readline.questionInt("Enter the number you want to search \n");
       if (isNaN(number) || number < 0) {
         console.log("Enter positive number only greater than zero");
       } else {

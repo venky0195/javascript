@@ -220,38 +220,50 @@ class Stack {
    * @param {any} item
    */
   push(item) {
-    /**
-     * create new node.
-     */
-    let node = new SNode(item);
-    if (this.top) {
-      node.next = this.top;
-      this.top = node;
-    } else {
-      this.top = node;
+    try {
+      /**
+       * create new node.
+       */
+      let node = new SNode(item);
+      if (this.top) {
+        node.next = this.top;
+        this.top = node;
+      } else {
+        this.top = node;
+      }
+    } catch (error) {
+      console.log(error.message);
     }
   }
   /**
    *To remove top element from the stack
    */
   pop() {
-    if (this.top) {
-      let itemToPop = this.top;
-      this.top = this.top.next;
-      return itemToPop.data;
-    } else {
-      console.log("Stack is empty!");
-      return false;
+    try {
+      if (this.top) {
+        let itemToPop = this.top;
+        this.top = this.top.next;
+        return itemToPop.data;
+      } else {
+        console.log("Stack is empty!");
+        return false;
+      }
+    } catch (error) {
+      console.log(error.message);
     }
   }
   /**
    * Return the topmost element without removing it from the stack.
    */
   peak() {
-    if (this.top) {
-      return this.top.data;
-    } else {
-      return null;
+    try {
+      if (this.top) {
+        return this.top.data;
+      } else {
+        return null;
+      }
+    } catch (error) {
+      console.log(error.message);
     }
   }
   /**
@@ -273,13 +285,17 @@ class Stack {
     return counter;
   }
   print() {
-    var string = "";
-    var temp = this.top;
-    while (temp != null) {
-      string = string + " " + temp.data;
-      temp = temp.next;
+    try {
+      var string = "";
+      var temp = this.top;
+      while (temp != null) {
+        string = string + " " + temp.data;
+        temp = temp.next;
+      }
+      return string;
+    } catch (error) {
+      console.log(error.message);
     }
-    return string;
   }
 }
 /*****************************************************Queue*******************************************/
@@ -463,6 +479,54 @@ class Calendar {
       console.log(error.message);
     }
   }
+  /**
+   * Passed a month, returns the number of days in that month.
+   * @param {Number} month
+   */
+  monthOf(month) {
+    try {
+      switch (month) {
+        case 1:
+          return 31;
+          break;
+        case 2:
+          return 28;
+          break;
+        case 3:
+          return 31;
+          break;
+        case 4:
+          return 30;
+          break;
+        case 5:
+          return 31;
+          break;
+        case 6:
+          return 30;
+          break;
+        case 7:
+          return 31;
+          break;
+        case 8:
+          return 31;
+          break;
+        case 9:
+          return 30;
+          break;
+        case 10:
+          return 31;
+          break;
+        case 11:
+          return 30;
+          break;
+        case 12:
+          return 31;
+          break;
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
 }
 /*****************************************************LinkedListQueue**********************************/
 class QNode {
@@ -482,34 +546,42 @@ class LLQueue {
    * @param {any} item
    */
   enQueue(item) {
-    /**
-     * Create a node by passing the item
-     */
-    let node = new QNode(item);
-    /**
-     * If there are no head and tail, point the data to head and tail
-     */
-    if (!this.head) {
-      this.head = node;
-      this.tail = node;
-    } else {
+    try {
       /**
-       * We just move the tail pointer
+       * Create a node by passing the item
        */
-      this.tail.next = node;
-      this.tail = node;
+      let node = new QNode(item);
+      /**
+       * If there are no head and tail, point the data to head and tail
+       */
+      if (!this.head) {
+        this.head = node;
+        this.tail = node;
+      } else {
+        /**
+         * We just move the tail pointer
+         */
+        this.tail.next = node;
+        this.tail = node;
+      }
+    } catch (error) {
+      console.log(error.message);
     }
   }
   /**
    * To remove an item from the queue.
    */
   deQueue() {
-    if (!this.head) {
-      return "No item";
-    } else {
-      let itemToPop = this.head;
-      this.head = this.head.next;
-      return itemToPop;
+    try {
+      if (!this.head) {
+        return "No item";
+      } else {
+        let itemToPop = this.head;
+        this.head = this.head.next;
+        return itemToPop.data;
+      }
+    } catch (error) {
+      console.log(error.message);
     }
   }
   /**
@@ -522,22 +594,33 @@ class LLQueue {
    * Returns the size of the queue
    */
   size() {
-    let current = this.head;
-    let counter = 0;
-    while (current) {
-      counter++;
-      current = current.next;
+    try {
+      let current = this.head;
+      let counter = 0;
+      while (current) {
+        counter++;
+        current = current.next;
+      }
+      return counter;
+    } catch (error) {
+      console.log(error.message);
     }
-    return counter;
   }
+  /**
+   * To print the contents in the queue.
+   */
   print() {
-    var string = "";
-    var temp = this.head;
-    while (temp) {
-      string = string + " " + temp.data;
-      temp = temp.next;
+    try {
+      var string = "";
+      var temp = this.head;
+      while (temp) {
+        string = string + " " + temp.data;
+        temp = temp.next;
+      }
+      return string;
+    } catch (error) {
+      console.log(error.message);
     }
-    return string;
   }
 }
 
@@ -554,11 +637,15 @@ module.exports = {
    * @param {Number} number
    */
   factorization(number) {
-    var fact = 1;
-    for (let i = 1; i <= number; i++) {
-      fact = fact * i;
+    try {
+      var fact = 1;
+      for (let i = 1; i <= number; i++) {
+        fact = fact * i;
+      }
+      return fact;
+    } catch (error) {
+      console.log(error.message);
     }
-    return fact;
   },
   /**
    * To find the prime numbers for the given range
@@ -566,100 +653,108 @@ module.exports = {
    * @param {Number} final
    */
   isPrime(initial, final) {
-    var flag = 0;
-    k = 0;
-    var prime = [];
+    try {
+      var flag = 0;
+      k = 0;
+      var prime = [];
 
-    for (var index1 = initial; index1 <= final; index1++) {
-      for (var index2 = 2; index2 < index1; index2++) {
-        if (index1 % index2 == 0) {
-          flag = 0;
-          break;
-        } else {
-          flag = 1;
+      for (var index1 = initial; index1 <= final; index1++) {
+        for (var index2 = 2; index2 < index1; index2++) {
+          if (index1 % index2 == 0) {
+            flag = 0;
+            break;
+          } else {
+            flag = 1;
+          }
+        }
+        if (flag == 1) {
+          prime[k++] = index1;
         }
       }
-      if (flag == 1) {
-        prime[k++] = index1;
-      }
+      return prime;
+    } catch (error) {
+      console.log(error.message);
     }
-    return prime;
   },
   /**
    * To print the numbers which are prime and anagrams in the ranges
    */
   dArray() {
-    var arr = [];
-    var arr2 = [];
-    /**
-     * Initialize ranges in an array
-     */
-    var array = [
-      ["0-100 "],
-      ["100-200 "],
-      ["200-300 "],
-      ["300-400 "],
-      ["400-500 "],
-      ["500-600 "],
-      ["600-700 "],
-      ["700-800 "],
-      ["800-900 "],
-      ["900-1000 "]
-    ];
-    /**
-     * Loop from 2 to 1000 and find prime numbers and store it in an array
-     */
-    for (let i = 2; i < 1000; i++) {
-      if (utility.isPrime(i)) {
-        arr.push(i);
+    try {
+      var arr = [];
+      var arr2 = [];
+      /**
+       * Initialize ranges in an array
+       */
+      var array = [
+        ["0-100 "],
+        ["100-200 "],
+        ["200-300 "],
+        ["300-400 "],
+        ["400-500 "],
+        ["500-600 "],
+        ["600-700 "],
+        ["700-800 "],
+        ["800-900 "],
+        ["900-1000 "]
+      ];
+      /**
+       * Loop from 2 to 1000 and find prime numbers and store it in an array
+       */
+      for (let i = 2; i < 1000; i++) {
+        if (utility.isPrime(i)) {
+          arr.push(i);
+        }
       }
-    }
-    /**
-     * Set range to 100 initially.
-     */
-    var range = 100,
-      k = 0;
-    /**
-     * Loop from 0 to length of array
-     * Check if each index is anagram or not and push
-     * If anagram, store it in one array
-     * else, store it it another array and add 100 for range in each iteration
-     */
-    for (let i = 0; i < arr.length; i++) {
-      for (let j = i + 1; j < arr.length; j++) {
-        if (utility.isAnagram(arr[i], arr[j])) {
-          if (arr[i] <= range) {
-            if (arr[j] <= range) {
-              array[k].push(arr[i]);
-              arr2.push(arr[i]);
-              arr2.push(arr[j]);
-              array[k].push(arr[j]);
-            }
-          } else {
-            range = range + 100;
-            k++;
-            if (arr[j] <= range) {
-              array[k].push(arr[i]);
-              array[k].push(arr[j]);
+      /**
+       * Set range to 100 initially.
+       */
+      var range = 100,
+        k = 0;
+      /**
+       * Loop from 0 to length of array
+       * Check if each index is anagram or not and push
+       * If anagram, store it in one array
+       * else, store it it another array and add 100 for range in each iteration
+       */
+      for (let i = 0; i < arr.length; i++) {
+        for (let j = i + 1; j < arr.length; j++) {
+          if (utility.isAnagram(arr[i], arr[j])) {
+            if (arr[i] <= range) {
+              if (arr[j] <= range) {
+                array[k].push(arr[i]);
+                arr2.push(arr[i]);
+                arr2.push(arr[j]);
+                array[k].push(arr[j]);
+              }
+            } else {
+              range = range + 100;
+              k++;
+              if (arr[j] <= range) {
+                array[k].push(arr[i]);
+                array[k].push(arr[j]);
+              }
             }
           }
         }
       }
-    }
-    console.log("The Number which are prime and anagram ");
-    /**
-     * To print the numbers which are only prime and anagrams in the ranges.
-     */
-    for (let i = 0; i < array.length; i++) {
-      for (let j = 0; j < array[i].length; j++) {
-        take.print(array[i][j]);
-        if (j == 0) {
-          take.print(" : ");
-        } else {
-          if (j != array[i].length - 1) take.print(",");
+      console.log("The Number which are prime and anagram ");
+      /**
+       * To print the numbers which are only prime and anagrams in the ranges.
+       */
+      for (let i = 0; i < array.length; i++) {
+        for (let j = 0; j < array[i].length; j++) {
+          take.print(array[i][j]);
+          if (j == 0) {
+            take.print(" : ");
+          } else {
+            if (j != array[i].length - 1) take.print(",");
+          }
         }
+        console.log();
       }
-      console.log();
+    } catch (error) {
+      console.log(error.message);
     }
   }
 };
