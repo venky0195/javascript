@@ -945,7 +945,7 @@ module.exports = {
    * @description :  Take a range of 0 1000 Numbers and find the Prime numbers in that range.
    * @function    :  isPrime function to check if the number is prime or not.
    *                 primeNum function to print the prime numbers in the range 0-1000.
-   * @parameter   :  isPrime function accepts number to check if it is prime number or not.
+   * @param {Number} num 
    */
   isPrime(num) {
     try {

@@ -272,11 +272,11 @@ class Stack {
     }
     return counter;
   }
-  print(){
+  print() {
     var string = "";
-    var temp = this.top
-    while(temp!=null){
-      string = string + " " + temp.data
+    var temp = this.top;
+    while (temp != null) {
+      string = string + " " + temp.data;
       temp = temp.next;
     }
     return string;
@@ -530,10 +530,10 @@ class LLQueue {
     }
     return counter;
   }
-  print(){
+  print() {
     var string = "";
-    var temp = this.head
-    while(temp){
+    var temp = this.head;
+    while (temp) {
       string = string + " " + temp.data;
       temp = temp.next;
     }
@@ -551,7 +551,7 @@ module.exports = {
   LLQueue,
   /**
    * To find the factorization of a given number
-   * @param {Number} number 
+   * @param {Number} number
    */
   factorization(number) {
     var fact = 1;
@@ -562,34 +562,104 @@ module.exports = {
   },
   /**
    * To find the prime numbers for the given range
-   * @param {Number} initial 
-   * @param {Number} final 
+   * @param {Number} initial
+   * @param {Number} final
    */
-  isPrime(initial,final)
-{
-var flag=0;
-k=0;
-var prime=[];
+  isPrime(initial, final) {
+    var flag = 0;
+    k = 0;
+    var prime = [];
 
-for(var index1=initial;index1<=final;index1++)
-{
-  for(var index2=2;index2<index1;index2++)
-  {
-    if(index1%index2==0)
-    {
-      flag=0;
-      break;
+    for (var index1 = initial; index1 <= final; index1++) {
+      for (var index2 = 2; index2 < index1; index2++) {
+        if (index1 % index2 == 0) {
+          flag = 0;
+          break;
+        } else {
+          flag = 1;
+        }
+      }
+      if (flag == 1) {
+        prime[k++] = index1;
+      }
     }
-    else
-    {
-      flag=1;
+    return prime;
+  },
+  /**
+   * To print the numbers which are prime and anagrams in the ranges
+   */
+  dArray() {
+    var arr = [];
+    var arr2 = [];
+    /**
+     * Initialize ranges in an array
+     */
+    var array = [
+      ["0-100 "],
+      ["100-200 "],
+      ["200-300 "],
+      ["300-400 "],
+      ["400-500 "],
+      ["500-600 "],
+      ["600-700 "],
+      ["700-800 "],
+      ["800-900 "],
+      ["900-1000 "]
+    ];
+    /**
+     * Loop from 2 to 1000 and find prime numbers and store it in an array
+     */
+    for (let i = 2; i < 1000; i++) {
+      if (utility.isPrime(i)) {
+        arr.push(i);
+      }
+    }
+    /**
+     * Set range to 100 initially.
+     */
+    var range = 100,
+      k = 0;
+    /**
+     * Loop from 0 to length of array
+     * Check if each index is anagram or not and push
+     * If anagram, store it in one array
+     * else, store it it another array and add 100 for range in each iteration
+     */
+    for (let i = 0; i < arr.length; i++) {
+      for (let j = i + 1; j < arr.length; j++) {
+        if (utility.isAnagram(arr[i], arr[j])) {
+          if (arr[i] <= range) {
+            if (arr[j] <= range) {
+              array[k].push(arr[i]);
+              arr2.push(arr[i]);
+              arr2.push(arr[j]);
+              array[k].push(arr[j]);
+            }
+          } else {
+            range = range + 100;
+            k++;
+            if (arr[j] <= range) {
+              array[k].push(arr[i]);
+              array[k].push(arr[j]);
+            }
+          }
+        }
+      }
+    }
+    console.log("The Number which are prime and anagram ");
+    /**
+     * To print the numbers which are only prime and anagrams in the ranges.
+     */
+    for (let i = 0; i < array.length; i++) {
+      for (let j = 0; j < array[i].length; j++) {
+        take.print(array[i][j]);
+        if (j == 0) {
+          take.print(" : ");
+        } else {
+          if (j != array[i].length - 1) take.print(",");
+        }
+      }
+      console.log();
     }
   }
-  if(flag==1)
-  {
-    prime[k++]=index1;
-  }
-}
-return prime;
-},
 };

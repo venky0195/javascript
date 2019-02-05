@@ -37,5 +37,5 @@ for (let i = 0; i < arr.length; i++) {
  * Print the anagrams in the range in reverse order. i.e, contents in the stack.
  */
 var result = stack.print()
-console.log(("Anagrams in reverse order :"));
+console.log(("Anagrams which are prime in reverse order :"));
 console.log(result + "\n");
