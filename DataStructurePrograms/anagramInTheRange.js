@@ -33,7 +33,6 @@ try {
   var range = 100;
   var arr = [];
   var arr1 = [];
-  var arr2 = [];
   /**
    * Check for prime numbers in the range 0 to 1000 and split each character, store in an array and sort it
    *

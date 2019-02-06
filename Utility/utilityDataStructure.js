@@ -444,7 +444,7 @@ class Calendar {
          * Check for leap year
          */
         var leap = this.leapYear(year);
-        if ((leap = true)) {
+        if (leap == true) {
           dates[2] = 29;
         }
         /**
@@ -682,7 +682,6 @@ module.exports = {
   dArray() {
     try {
       var arr = [];
-      var arr2 = [];
       /**
        * Initialize ranges in an array
        */
@@ -723,8 +722,6 @@ module.exports = {
             if (arr[i] <= range) {
               if (arr[j] <= range) {
                 array[k].push(arr[i]);
-                arr2.push(arr[i]);
-                arr2.push(arr[j]);
                 array[k].push(arr[j]);
               }
             } else {

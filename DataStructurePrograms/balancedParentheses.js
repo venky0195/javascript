@@ -17,7 +17,7 @@ For accessing data from utility file and utilityDataStructure
 var access = require("../Utility/utility");
 var accessDs = require("../Utility/utilityDataStructure");
 
-function Stack() {
+function balancedParentheses() {
   try {
     /**
      * Create a stack object
@@ -26,18 +26,18 @@ function Stack() {
     /**
      * Ask user to input the mathematical expression with paretnheses.
      */
-    var str = readline.question(
+    var input = readline.question(
       "Enter the mathematical expression with parantheses : "
     );
     var character;
     /**
      * Loop from beginning till the length of user input string
      */
-    for (var i = 0; i < str.length; i++) {
+    for (var i = 0; i < input.length; i++) {
       /**
        * access every index of the string
        */
-      character = str.charAt(i);
+      character = input.charAt(i);
       /**
        * Condition to check open parenthesis and push it to stack
        */
@@ -77,8 +77,8 @@ function Stack() {
     console.log(error.message);
   }
 }
-var bol = Stack();
-if (bol) {
+var result = balancedParentheses();
+if (result) {
   console.log("String is balanced");
 } else {
   console.log("Not balanced");

@@ -34,7 +34,6 @@ try {
     else {
         console.log("Enter only numbers");
     }
-
 } catch (error) {
     console.log(error.message);
 

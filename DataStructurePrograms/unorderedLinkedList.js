@@ -23,7 +23,12 @@ For accessing data from utility file and utilityDataStructure
   /**
    * Read the file and store it an array
    */
-  var arr = access.fileRead();
+  var fs = require("fs");
+  var f = fs.readFileSync("sample.txt", "utf8");
+  var arr = f
+    .trim()
+    .toLowerCase()
+    .split(" ");
   /**
    * Create a linked list object
    */
@@ -43,6 +48,7 @@ For accessing data from utility file and utilityDataStructure
    * Ask user to enter a word to search in the list.
    */
   var word = readline.question("Enter the word: ");
+  word = word.toLowerCase();
   /**
    * Check whether the word is present in the list or not by using search function.
    */

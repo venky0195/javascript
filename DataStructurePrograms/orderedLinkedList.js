@@ -22,7 +22,10 @@ For accessing data from utility file and utilityDataStructure
   /**
    * Read the file and store it an array
    */
-  var arr1 = access.fileRead();
+  var fs = require("fs");
+  var f = fs.readFileSync("numbers.txt", "utf8");
+  var arr1 = f.trim().split(" ");
+
   var arr = [];
   for (let i = 0; i < arr1.length; i++) {
     arr[i] = parseInt(arr1[i]);

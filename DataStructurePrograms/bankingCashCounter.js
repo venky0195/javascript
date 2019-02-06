@@ -19,11 +19,11 @@ For accessing data from utility file and utilityDataStructure
 var access = require("../Utility/utility");
 var accessDs = require("../Utility/utilityDataStructure");
 
-function Queue() {
+function bankingCashCounter() {
   try {
     var queue = new accessDs.Queue();
-    var minBal = 4000;
-    var balan = 4000;
+    var minBal = 1000;
+    var balance = 1000;
     var set = [];
     var flag = true;
     var count = 0;
@@ -41,48 +41,75 @@ function Queue() {
         valid = true;
       }
     } while (!valid);
-
-    if (size > 0) {
+    /**
+     * Loop the number of size of people to deposit and withdraw amount.
+     */
+    even: for (let i = 1; i < size; i++) {
+      var valid = false;
       /**
-       * Loop the number of size of people to deposit and withdraw amount.
+       * Ask user for choice, Validation to accept only valid choice.
        */
-      even: for (let i = 1; i < size; i++) {
+      do {
         var input = readline.question(
           "\nEnter 1 deposit amount :\nEnter 2 to withdraw amount :"
         );
-        if (input == 1) {
-          console.log("\nBalance left in the bank: " + balan);
+        if (isNaN(input) || input < 1 || input > 2) {
+          console.log("Not a valid entry. Enter choice 1 or 2");
+        } else {
+          valid = true;
+        }
+      } while (!valid);
+      if (input == 1) {
+        console.log("\nBalance left in the bank: " + balance);
+        var valid = false;
+        /**
+         * condition to check whether the input is in the given format and minimum characters of 3.
+         */
+        do {
           var amount = readline.questionFloat(
             "Enter the total amount to deposit :"
           );
-          var set = queue.enQueue(Number(amount));
-          balan = balan + amount;
-          flag = true;
-        } else if (input == 2) {
-          console.log("\nBalance left in the bank: " + balan);
+          if (amount < 0) {
+            console.log("Please enter amount greater than 0\n");
+          } else {
+            valid = true;
+          }
+        } while (!valid);
+
+        var set = queue.enQueue(Number(amount));
+        balance = balance + amount;
+        flag = true;
+      } else if (input == 2) {
+        console.log("\nBalance left in the bank: " + balance);
+        var valid = false;
+        /**
+         * condition to check whether the input is in the given format and minimum characters of 3.
+         */
+        do {
           var amount = readline.questionFloat(
             "Enter the total amount to be withdraw :"
           );
-          balan = balan - amount;
-          if (amount > balan) {
-            console.log(
-              "Minimum balance (₹" +
-                minBal +
-                ") is not maintained. Please comeback with lesser amount"
-            );
-            return;
+          balance = balance - amount;
+
+          if (amount < 0) {
+            console.log("Please enter amount greater than 0\n");
+          } else {
+            valid = true;
           }
-          var get = queue.enQueue(Number(-amount));
-          flag = true;
-        } else {
-          console.log("Make sure that you have entered correct key ");
-          flag = false;
+        } while (!valid);
+
+        balance = balance - amount;
+        if (amount > balance) {
+          console.log(
+            "Minimum balance (₹" +
+              minBal +
+              ") is not maintained. Please comeback with lesser amount"
+          );
           return;
         }
+        var get = queue.enQueue(Number(-amount));
+        flag = true;
       }
-    } else {
-      console.log("Invalid input ");
-      return;
     }
     if (flag) {
       var add = 0;
@@ -102,4 +129,4 @@ function Queue() {
     console.log(error.message);
   }
 }
-Queue();
+bankingCashCounter();
