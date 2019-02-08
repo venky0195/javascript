@@ -1,0 +1,53 @@
+{
+  "rice": [
+    {
+      "riceName": "Aizon Rice",
+      "weight": 10,
+      "price": 500
+    },
+    {
+      "riceName": "Ambemohar",
+      "weight": 15,
+      "price": 700
+    },
+    {
+      "riceName": "Basmati Rice",
+      "weight": 20,
+      "price": 1000
+    }
+  ],
+  "wheat": [
+    {
+      "wheatName": "Aashirvaad Atta",
+      "weight": 5,
+      "price": 100
+    },
+    {
+      "wheatName": "Patanjali Atta",
+      "weight": 10,
+      "price": 250
+    },
+    {
+      "wheatName": "Hathi Atta",
+      "weight": 25,
+      "price": 790
+    }
+  ],
+  "pulses": [
+    {
+      "pulseName": "Peacock",
+      "weight": 1,
+      "price": 60
+    },
+    {
+      "pulseName": "Dhalings",
+      "weight": 2,
+      "price": 150
+    },
+    {
+      "pulseName": "India Pulse",
+      "weight": 3,
+      "price": 220
+    }
+  ]
+}
