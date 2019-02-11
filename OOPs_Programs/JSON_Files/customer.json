@@ -1,0 +1,13 @@
+{
+  "customer": [
+    { "name": "Jack", "id": 11, "share": 2 },
+    { "name": "Jill", "id": 22, "share": 22 },
+    { "name": "Tom", "id": 33, "share": 6 },
+    { "name": "Panda", "id": 44, "share": 14 },
+    { "name": "BBB", "id": 52 },
+    { "name": "KKK", "id": 7 },
+    { "name": "asdasd", "id": 49, "share": 22 },
+    { "name": "venky", "id": 84, "share": 51 },
+    { "name": "mnb", "id": 50, "share": 31 }
+  ]
+}

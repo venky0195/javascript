@@ -27,7 +27,7 @@ function call() {
     do {
       var month = readLine.questionInt("Enter the month : ");
     var year = readLine.questionInt("Enter the year : ");
-    if (isNaN(month, year) || (0 > month || month > 13) || (999 > year || year > 10000)){
+    if (isNaN(month, year) || (0 >= month || month > 13) || (999 > year || year > 10000)){
         console.log("Not a valid entry.");
       } else {
         valid = true;

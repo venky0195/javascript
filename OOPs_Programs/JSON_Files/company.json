@@ -1,0 +1,7 @@
+{
+  "company": [
+    { "name": "TCS", "symbol": "T", "share": 2, "price": 200 },
+    { "name": "SRS", "symbol": "S", "share": 3, "price": 400 },
+    { "name": "VRL", "symbol": "V", "share": 31, "price": 600 }
+  ]
+}

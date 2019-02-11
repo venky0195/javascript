@@ -1241,7 +1241,8 @@ module.exports = {
           }
         }
       }
-      console.log(arr);
+      //console.log(arr);
+      return arr;
     } catch (error) {
       console.log(error.message);
     }

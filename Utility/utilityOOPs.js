@@ -50,11 +50,30 @@ module.exports = {
    * @param {string} name
    * @param {string} fullName
    * @param {10 digit number} mobileNumber
-   * @param {string} date
    */
-  regex(name, fullName, mobileNumber, date) {
+  regex(name, fullName, mobileNumber) {
+    var readLine = require("readline-sync");
+    var nameFormat = /[a-zA-Z]/;
+    /**
+     * condition to check whether the input is string.
+     */
+    while (!nameFormat.test(name) || !nameFormat.test(fullName)) {
+      name = readLine.question("Enter your name(alphabets only) : ");
+      fullName = readLine.question("Enter your full name(alphabets only) : ");
+    }
+    /**
+     * condition to check whether the input is 10 digit number.
+     */
+    while (isNaN(mobileNumber) || mobileNumber.length != 10) {
+      mobileNumber = readLine.question(
+        "\nEnter valid phone number(10 digits only) : "
+      );
+    }
+
     var fileRead = require("fs");
     var line = fileRead.readFileSync("regex.txt", "utf8");
+    var date = new Date();
+    date = date.toLocaleDateString();
     /**
      * Replacing name, full name, mobileNumebr, date with proper values passed using regular expressions.
      */
@@ -64,5 +83,59 @@ module.exports = {
     line = line.replace(/01-01-2016/g, date);
 
     return line;
+  },
+  /**
+   * Program to create a deck of cards having suit ("Clubs","Diamonds", "Hearts", "Spades") &
+   * Rank ("2", "3", "4", "5", "6", "7", "8", "9", "10","Jack", "Queen", "King", "Ace").
+   * Returns the deck of card in a array
+   */
+  deckOfCards() {
+    try {
+      var suits = ["♣", "♦", "♥", "♠"];
+      var ranks = [
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "Jack",
+        "Queen",
+        "King",
+        "Ace"
+      ];
+      /**
+       * To calculate total number of cards
+       */
+      var totalCards = suits.length * ranks.length;
+      /**
+       * To create a deck of array
+       */
+      var cardArray = [];
+      for (let currentSuit = 0; currentSuit < suits.length; currentSuit++) {
+        for (let currentRank = 0; currentRank < ranks.length; currentRank++) {
+          var temp = "";
+          cardArray.push(temp + ranks[currentRank] + suits[currentSuit]);
+        }
+      }
+      /**
+       * To shuffle the deck
+       */
+      for (let shuffle = 0; shuffle < totalCards; shuffle++) {
+        var num = Math.floor(Math.random() * totalCards);
+        /**
+         * Performing swapping
+         */
+        var temp = cardArray[shuffle];
+        cardArray[shuffle] = cardArray[num];
+        cardArray[num] = temp;
+      }
+      return cardArray;
+    } catch (error) {
+      console.log(error.message);
+    }
   }
 };

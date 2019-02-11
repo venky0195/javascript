@@ -431,7 +431,7 @@ class Calendar {
     try {
       if (
         !isNaN(month, year) &&
-        (0 < month && month < 13) &&
+        (0 <= month && month < 13) &&
         (999 < year && year < 10000)
       ) {
         var week = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
