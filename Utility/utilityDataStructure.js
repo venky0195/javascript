@@ -710,6 +710,49 @@ class LLQueue {
       console.log(error.message);
     }
   }
+  printShares(){
+    var arr = [];
+    if (this.head == null) {
+      return null;
+    } else {
+      var temp = this.head;
+      while (temp) {
+        arr.push(temp.data);
+        temp = temp.next;
+      }
+      return arr;
+    }
+  }
+  /**
+   * To remove the share from the stock
+   * @param {any} element 
+   */
+  removeStock(element) {
+    var temp = this.head;
+    var prev = null;
+
+    // iterate over the list
+    while (temp != null) {
+      // comparing element & if found then remove
+      var stock = temp.data;
+      if (stock.name == element || stock.symbol == element) {
+        if (prev == null) {
+          this.head = temp.next;
+        } else {
+          prev.next = temp.next;
+        }
+        /**
+         * To decrement the size of the LinkedList
+         */
+        this.size--;
+        return temp.data;
+      }
+      prev = temp;
+      temp = temp.next;
+    }
+    return -1;
+  }
+
 }
 
 module.exports = {

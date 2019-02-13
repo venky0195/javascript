@@ -1,0 +1,70 @@
+{
+  "Doctor": [
+    {
+      "name": "Dr.bnm",
+      "Id": "1256",
+      "specialisation": "cardiologist",
+      "availability": "AM"
+    },
+    {
+      "name": "Dr.asd",
+      "Id": "8541",
+      "specialisation": "neurologist",
+      "availability": "Both"
+    },
+    {
+      "name": "Dr.qwe",
+      "Id": "3698",
+      "specialisation": "Ophthalmologist ",
+      "availability": "Both"
+    },
+    {
+      "name": "Dr.das",
+      "Id": "7896",
+      "specialisation": "dynacologist",
+      "availability": "PM"
+    }
+  ],
+  "Patient": [
+    {
+      "name": "das",
+      "Id": 68139,
+      "phoneNumber": 3210654789,
+      "age": 3,
+      "appointmentFrom": "Dr.bnm",
+      "onTheDayOf": 15
+    },
+    {
+      "name": "ads",
+      "Id": 75445,
+      "phoneNumber": 3210456987,
+      "age": 33,
+      "appointmentFrom": "Dr.bnm",
+      "onTheDayOf": 16
+    },
+    {
+      "name": "vxc",
+      "Id": 42245,
+      "phoneNumber": 3333333333,
+      "age": 3,
+      "appointmentFrom": "Dr.bnm",
+      "onTheDayOf": 16
+    },
+    {
+      "name": "dsa",
+      "Id": 15175,
+      "phoneNumber": 3213213210,
+      "age": 32,
+      "appointmentFrom": "Dr.bnm",
+      "onTheDayOf": 16
+    },
+    {
+      "name": "cd",
+      "Id": 95813,
+      "phoneNumber": 3210321032,
+      "age": 32,
+      "appointmentFrom": "Dr.asd",
+      "onTheDayOf": 16
+    }
+  ]
+}

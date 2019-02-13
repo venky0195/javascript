@@ -15,13 +15,12 @@ class StockAccount {
    */
   stockCreate() {
     try {
-      var name1 = read.question("enter the name : ");
+      var name1 = read.question("Enter the name : ");
       /**
        * Generating random value for id and share.
        */
       var id1 = Math.floor(Math.random() * 100);
-      console.log(id1);
-      var share1 = Math.floor(Math.random() * 100);
+      var share1 = read.question("Enter the number of shares : ");
       /**
        * Push the information to the customer ooject
        */
@@ -81,14 +80,14 @@ class StockAccount {
            * Ask user from which company he wants to buy the share
            */
           var name1 = read.question(
-            "enter name of company share you want to buy "
+            "Enter name/symbol of company you want to buy "
           );
           var companyDetails = this.companyDataJson.company;
           /**
            * Use for in loop and compare the given comany name with passed company name
            */
           for (let i in companyDetails) {
-            if (companyDetails[i].name == name1) {
+            if (companyDetails[i].name == name1||companyDetails[i].symbol == name1) {
               console.log("company number of shares price of each share");
               console.log(companyDetails[i]);
               var companyName = companyDetails[i].name;
@@ -99,10 +98,10 @@ class StockAccount {
               var flag = false;
               do {
                 var numberOfShares = read.questionInt(
-                  "enter the number of shares you want to buy"
+                  "Enter the number of shares you want to buy: "
                 );
                 if (numberOfShares > share) {
-                  console.log("Enter no of shares less than company shares ");
+                  console.log("\nEnter no of shares less than company shares ");
                 } else {
                   flag = true;
                 }
@@ -225,7 +224,7 @@ class StockAccount {
                 );
                 if (number > share) {
                   console.log(
-                    "Enter no of shares lesser than the current shares "
+                    "\nEnter no of shares lesser than the current shares "
                   );
                 } else {
                   flag = true;
